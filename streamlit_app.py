@@ -30,7 +30,7 @@ st.title('Application :blue[Deep Learning] and :red[Machine Learning] in predict
 
 chart_data = pd.read_csv("historical-vn30.csv",index_col=0)
 st.line_chart(chart_data)
-# st.dataframe(chart_data)
+st.dataframe(chart_data)
 
 st.header("Reoprt model")
 
