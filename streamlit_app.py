@@ -121,7 +121,9 @@ if option == 'Manual Input':
 #     pred = scaler.predict(np.array(features,ndmin=2))
     
     submitted = st.form_submit_button("Submit data") 
-    if submitted:
+    if submitted:     
+      with st.spinner('Wait for it...'):
+        time.sleep(5)
       st.success('This is a success updating!', icon="✅")
 #       st.success(f'VN30 will uptrend {pred}', icon="✅")
 else:
