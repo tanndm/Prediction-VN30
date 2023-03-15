@@ -29,17 +29,25 @@ st.title('Application :blue[Deep Learning] and :red[Machine Learning] in predict
 import plotly.graph_objects as go
 df = pd.read_csv('vn30-his.csv')
 
-fig2 = go.Table(
-        header=dict(
-            values=["Date", "Close", "Open",
-                    "High", "Low", "Volume"],
-            font=dict(size=10),
-            align="left"),
-        cells=dict(
-            values=[df[k].tolist() for k in df.columns[0:]],
-            align = "left"))
+# fig2 = go.Table(
+#         header=dict(
+#             values=["Date", "Close", "Open",
+#                     "High", "Low", "Volume"],
+#             font=dict(size=10),
+#             align="left"),
+#         cells=dict(
+#             values=[df[k].tolist() for k in df.columns[0:]],
+#             align = "left"))
 
+
+
+fig2 = go.Figure(data=[go.Table(header=dict(
+              values=["Date", "Close", "Open",
+                    "High", "Low", "Volume"]),
+              cells=dict(values=[df[k].tolist() for k in df.columns[0:]]))
+                     ])
 st.plotly_chart(fig2, theme="streamlit", use_container_width=True)
+
 
 fig = go.Figure(data=[go.Candlestick(x=df['Date'],
                 open=df['Open'],
