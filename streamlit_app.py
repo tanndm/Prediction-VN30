@@ -27,6 +27,15 @@ def pred_out(num):
 st.title('Application :blue[Deep Learning] and :red[Machine Learning] in predicting VN30-index price movement using financial news and technical analysis')
 
 import plotly.graph_objects as go
+# df = pd.read_csv('https://raw.githubusercontent.com/plotly/datasets/master/finance-charts-apple.csv')
+
+# fig = go.Figure(data=[go.Candlestick(x=df['Date'],
+#                 open=df['AAPL.Open'],
+#                 high=df['AAPL.High'],
+#                 low=df['AAPL.Low'],
+#                 close=df['AAPL.Close'])])
+
+# fig.show()
 
 chart_data = pd.read_csv("historical-vn30.csv",index_col=0)
 st.dataframe(chart_data)
@@ -120,14 +129,14 @@ if option == 'Manual Input':
     with ta7:
       RSI_14d_lag = st.number_input("Feature 15")
     # Prediction
-#     features= ['bid_quality', 'bid_volume', 'ask_quality', 'ask_volume', 'matching_volume', 'matching_volume',
-#                'Positive', 'Negative', 'SMA_10_lag', 'SMA_20_lag', 'EMA_10_lag', 'EMA_20_lag', 'RSI_7d_lag', 'RSI_9d_lag', 'RSI_14d_lag']
+    features= ['bid_quality', 'bid_volume', 'ask_quality', 'ask_volume', 'matching_volume', 'matching_volume',
+               'Positive', 'Negative', 'SMA_10_lag', 'SMA_20_lag', 'EMA_10_lag', 'EMA_20_lag', 'RSI_7d_lag', 'RSI_9d_lag', 'RSI_14d_lag']
     
     res_df = pd.DataFrame({'bid_quality':bid_quality, 'bid_volume':bid_volume, 'ask_quality':ask_quality, 'ask_volume':ask_volume,
                            'matching_volume':matching_volume, 'negotiable_volume':negotiable_volume, 'Positive':positive, 'Negative':negative,
                            'SMA_10':SMA_10_lag, 'SMA_20':SMA_20_lag, 'EMA_10':EMA_10_lag, 'EMA_20':EMA_20_lag, 'RSI_7d':RSI_7d_lag, 
                            'RSI_9d':RSI_9d_lag, 'RSI_14d':RSI_14d_lag},index=["05-01-2023"])
-#     pred = scaler.predict(np.array(features,ndmin=2))
+    pred = scaler.predict(np.array(features,ndmin=2))
     
     submitted = st.form_submit_button("Submit data") 
     if submitted:     
