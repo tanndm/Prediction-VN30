@@ -20,9 +20,9 @@ scaler = joblib.load(S_file)
 # Function to print out put which also converts numeric output from ML module to understandable STR 
 def pred_out(num):
   if num == 1:
-    st.warning('THE VN30-INDEX WILL :green[BE UPTREND]')
+    st.info('THE VN30-INDEX WILL :green[BE UPTREND]', icon="ℹ️")
   else:
-    st.success('THE VN30-INDEX WILL BE :red[DOWNTREND]')
+    st.info('THE VN30-INDEX WILL BE :red[DOWNTREND]', icon="ℹ️")
 
 st.title('Application :blue[Deep Learning] and :red[Machine Learning] in predicting VN30-index price movement using financial news and technical analysis')
 
@@ -155,8 +155,8 @@ if option == 'Manual Input':
     if submitted_2:     
       with st.spinner('Wait for it...'):
         time.sleep(3)
-      st.info('Next day, VN30-index will uptrend', icon="ℹ️")
-      st.info(f'Next day, {pred_out(pred)}', icon="ℹ️")
+      pred_out(pred)
+
 else:
   uploaded_files = st.file_uploader("Choose a CSV file", accept_multiple_files=True)
   for uploaded_file in uploaded_files:
