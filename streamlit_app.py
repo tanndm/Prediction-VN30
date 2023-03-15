@@ -16,6 +16,33 @@ st.set_page_config(page_title=apptitle,
 S_file = open('model.pkl','rb')
 scaler = joblib.load(S_file)
 
+st.header("Reoprt model")
+# col1, col2, col3, col4, col5 = st.columns(5)
+# with col1:
+ 
+st.metric(label="Accuracy", value="71%")
+
+col2, col3, col4, col5 = st.columns(4)
+with col2:
+  st.metric(label="Precison label 0", value="73%")
+with col3:
+  st.metric(label="Recall label 0", value="62%")
+with col4:
+  st.metric(label="F1-score", value="67%")
+with col5:
+  st.metric(label="Support", value="142")
+
+col6, col7, col8, col9 = st.columns(4)
+with col6:
+  st.metric(label="Precison label 1", value="70%")
+with col7:
+  st.metric(label="Recall label 1", value="80%")
+with col8:
+  st.metric(label="F1-score", value="75%")
+with col9:
+  st.metric(label="Support", value="161")
+  
+
 # Function to print out put which also converts numeric output from ML module to understandable STR 
 def pred_out(num):
   if num == 1:
@@ -81,14 +108,14 @@ if option == 'Manual Input':
       RSI_14d_lag = st.number_input("Feature 15")
 
     # Prediction
-    features= ['bid_quality', 'bid_volume', 'ask_quality', 'ask_volume', 'matching_volume', 'matching_volume',
-               'Positive', 'Negative', 'SMA_10_lag', 'SMA_20_lag', 'EMA_10_lag', 'EMA_20_lag', 'RSI_7d_lag', 'RSI_9d_lag', 'RSI_14d_lag']
-    pred = scaler.predict(np.array(features,ndmin=2))
+#     features= ['bid_quality', 'bid_volume', 'ask_quality', 'ask_volume', 'matching_volume', 'matching_volume',
+#                'Positive', 'Negative', 'SMA_10_lag', 'SMA_20_lag', 'EMA_10_lag', 'EMA_20_lag', 'RSI_7d_lag', 'RSI_9d_lag', 'RSI_14d_lag']
+#     pred = scaler.predict(np.array(features,ndmin=2))
     
     submitted = st.form_submit_button("Submit data") 
     if submitted:
       st.success('This is a success updating!', icon="✅")
-      st.success(f'VN30 will uptrend {pred}', icon="✅")
+#       st.success(f'VN30 will uptrend {pred}', icon="✅")
 else:
   uploaded_files = st.file_uploader("Choose a CSV file", accept_multiple_files=True)
   for uploaded_file in uploaded_files:
@@ -97,29 +124,9 @@ else:
   
 st.title("Train model")
 
-st.header("Result model")
-col1, col2, col3, col4, col5 = st.columns(5)
-with col1:
-  st.metric(label="Accuracy", value="71%")
-with col2:
-  st.metric(label="Precison label 0", value="80%")
-with col3:
-  st.metric(label="Recall label 0", value="70%")
-with col4:
-  st.metric(label="Precison label 1", value="70%")
-with col5:
-  st.metric(label="Precison label 1", value="70%")
+
         
-with st.form("sss"):
-    ss1, ss2 = st.columns(2)
-    # historical data
-    with ss1:
-      s1 = st.number_input("Feature 1")
-    with ss2:
-      s2 = st.number_input("Feature 2")
-    submitted_ss = st.form_submit_button("Submit data") 
-    if submitted_ss:
-      st.success('This is a success updating!', icon="✅")
+
 
 col1_1, col2_1, = st.columns(2)
 with col1_1:
