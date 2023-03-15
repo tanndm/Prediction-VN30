@@ -27,6 +27,10 @@ def pred_out(num):
 st.title('Application :blue[Deep Learning] and :red[Machine Learning] in predicting VN30-index price movement using financial news and technical analysis')
 
 
+
+chart_data = pd.read_csv("https://raw.githubusercontent.com/BrianNguyen2001/Crawling-data-from-web/main/historical-vn30.csv",index_col=0)
+st.line_chart(chart_data)
+
 st.header("Reoprt model")
 
 col00, col2, col3, col4, col5 = st.columns(5)
