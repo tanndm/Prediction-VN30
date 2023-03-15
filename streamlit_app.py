@@ -41,7 +41,7 @@ fig2=    go.Table(
             values=[df[k].tolist() for k in df.columns[0:]],
             align = "left")
     )
-st.plotly_chart(fg2, theme="streamlit", use_container_width=True)
+st.plotly_chart(fig2, theme="streamlit", use_container_width=True)
 
 fig = go.Figure(data=[go.Candlestick(x=df['Date'],
                 open=df['Open'],
