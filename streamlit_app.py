@@ -6,8 +6,12 @@ import joblib
 import webbrowser as wb
 import streamlit as st
 import time
-import os
+
+# check if the library folder already exists, to avoid building everytime you load the pahe
 import requests
+import os
+import sys
+import subprocess
 
 # check if the library folder already exists, to avoid building everytime you load the pahe
 if not os.path.isdir("/tmp/ta-lib"):
