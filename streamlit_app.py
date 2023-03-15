@@ -28,7 +28,9 @@ st.title('Application :blue[Deep Learning] and :red[Machine Learning] in predict
 
 st.header("Reoprt model")
 
-col2, col3, col4, col5 = st.columns(4)
+col00, col2, col3, col4, col5 = st.columns(5)
+with col00:
+  st.metric(label="", value="Label 0")
 with col2:
   st.metric(label="Precison label 0", value="73%")
 with col3:
