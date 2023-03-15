@@ -88,7 +88,7 @@ if option == 'Manual Input':
     with his5:
       matching_volume = st.number_input("Feature 5")
     with his6:
-      matching_volume = st.number_input("Feature 6")
+      negotiable_volume = st.number_input("Feature 6")
     
     st.title("Financial news")
     dum1, dum2, ta1 = st.columns(3)
@@ -119,14 +119,20 @@ if option == 'Manual Input':
     # Prediction
 #     features= ['bid_quality', 'bid_volume', 'ask_quality', 'ask_volume', 'matching_volume', 'matching_volume',
 #                'Positive', 'Negative', 'SMA_10_lag', 'SMA_20_lag', 'EMA_10_lag', 'EMA_20_lag', 'RSI_7d_lag', 'RSI_9d_lag', 'RSI_14d_lag']
+    
+    res_df = pd.DataFrame({'bid_quality':bid_quality, 'bid_volume':bid_volume, 'ask_quality':ask_quality, 'ask_volume':ask_volume,
+                           'matching_volume':matching_volume, 'negotiable_volume':negotiable_volume, 'Positive':Positive, 'Negative':Negative,
+                           'SMA_10':SMA_10_lag, 'SMA_20':SMA_20_lag, 'EMA_10':EMA_10_lag, 'EMA_20':EMA_20_lag, 'RSI_7d':RSI_7d_lag, 
+                           'RSI_9d':RSI_9d_lag, 'RSI_14d':RSI_14d_lag})
 #     pred = scaler.predict(np.array(features,ndmin=2))
     
     submitted = st.form_submit_button("Submit data") 
     if submitted:     
       with st.spinner('Wait for it...'):
         time.sleep(5)
-      if not (RSI_14d_lag == 0.00):
+      if (RSI_14d_lag != 0.00):
         st.success('This is a success updating!', icon="✅")
+        st.dataframe(res_df)
       else:
         st.warning('This is a warning', icon="⚠️")
     
