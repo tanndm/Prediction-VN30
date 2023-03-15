@@ -141,8 +141,6 @@ if option == 'Manual Input':
     
     submitted = st.form_submit_button("Submit data") 
     if submitted:     
-#       with st.spinner('Wait for it...'):
-#         time.sleep(5)
       if (RSI_14d_lag != 0.00):
         with st.spinner('Wait for it...'):
           time.sleep(3)
@@ -158,6 +156,7 @@ if option == 'Manual Input':
       with st.spinner('Wait for it...'):
         time.sleep(3)
       st.info('Next day, VN30-index will uptrend', icon="ℹ️")
+      st.info(f'Next day, VN30-index will uptrend {pred}', icon="ℹ️")
 else:
   uploaded_files = st.file_uploader("Choose a CSV file", accept_multiple_files=True)
   for uploaded_file in uploaded_files:
