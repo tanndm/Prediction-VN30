@@ -44,19 +44,18 @@ st.plotly_chart(fig, theme="streamlit", use_container_width=True)
 
 fig2 = go.Figure(data=[go.Table(header=dict(
               values=["Date", "Close", "Open",
-                    "High", "Low", "Volume"]),
-              cells=dict(values=[df[k].tolist() for k in df.columns[0:]]))
+                    "High", "Low"]),
+              cells=dict(values=[df[k].tolist() for k in df.columns[:-1]]))
                      ])
 fig.update_layout(
     height=400)
-st.plotly_chart(fig2, theme="streamlit", use_container_width=True)
 
+click_data = st.checkbox('Click here to show out all of historical data of VN30-Index')
+if click_data:
+  st.plotly_chart(fig2, theme="streamlit", use_container_width=True)
 
-chart_data = pd.read_csv("vn30-his.csv")
-st.dataframe(chart_data)
-
+  
 st.header("Reoprt model")
-
 col00, col2, col3, col4, col5 = st.columns(5)
 with col00:
   st.metric(label="", value="Label 0")
