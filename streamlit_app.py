@@ -16,11 +16,17 @@ st.set_page_config(page_title=apptitle,
 S_file = open('model.pkl','rb')
 scaler = joblib.load(S_file)
 
+# Function to print out put which also converts numeric output from ML module to understandable STR 
+def pred_out(num):
+  if num == 1:
+    st.warning('THE VN30-INDEX WILL :green[BE UPTREND]')
+  else:
+    st.success('THE VN30-INDEX WILL BE :red[DOWNTREND]')
+
+st.title('Application :blue[Deep Learning] and :red[Machine Learning] in predicting VN30-index price movement using financial news and technical analysis')
+
+
 st.header("Reoprt model")
-# col1, col2, col3, col4, col5 = st.columns(5)
-# with col1:
- 
-st.metric(label="Accuracy", value="71%")
 
 col2, col3, col4, col5 = st.columns(4)
 with col2:
@@ -41,16 +47,13 @@ with col8:
   st.metric(label="F1-score", value="75%")
 with col9:
   st.metric(label="Support", value="161")
+
+col1, col10, col11, col12 = st.columns(4)
+with col1:
+  st.metric(label="Accuracy", value="71%")
+with col12:
+  st.metric(label="Support", value="303")  
   
-
-# Function to print out put which also converts numeric output from ML module to understandable STR 
-def pred_out(num):
-  if num == 1:
-    st.warning('THE VN30-INDEX WILL :green[BE UPTREND]')
-  else:
-    st.success('THE VN30-INDEX WILL BE :red[DOWNTREND]')
-
-st.title('Application :blue[Deep Learning] and :red[Machine Learning] in predicting VN30-index price movement using financial news and technical analysis')
 
 option = st.selectbox(
     '**How would you like to be input data?**',
