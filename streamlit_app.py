@@ -39,6 +39,7 @@ fig.update_layout(
     showlegend=False,
     title_text="VN30-Index Candlestick chart from 2017 to 2023",
 )
+
 fig.update_layout(xaxis_rangeslider_visible=False)
 st.plotly_chart(fig, theme="streamlit", use_container_width=True)
 
@@ -55,6 +56,7 @@ fig.update_layout(
 
 click_data = st.checkbox('Click here to show out all of historical data of VN30-Index')
 if click_data:
+  fig.update_layout(xaxis_rangeslider_visible=False)
   st.plotly_chart(fig2, theme="streamlit", use_container_width=True)
 
   
