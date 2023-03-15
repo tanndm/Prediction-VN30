@@ -29,18 +29,18 @@ st.title('Application :blue[Deep Learning] and :red[Machine Learning] in predict
 import plotly.graph_objects as go
 df = pd.read_csv('vn30-his.csv')
 
-# Calculate the Moving Average
-df['SMA10'] = ta.SMA(df['Close'], timeperiod=10)
-df['SMA20'] = ta.SMA(df['Close'], timeperiod=20)
+# # Calculate the Moving Average
+# df['SMA10'] = ta.SMA(df['Close'], timeperiod=10)
+# df['SMA20'] = ta.SMA(df['Close'], timeperiod=20)
 
-# Calculate the Exponential Moving Average (EMA)
-df['EMA_10'] = ta.EMA(data['Close'], timeperiod=10)
-df['EMA_20'] = ta.EMA(data['Close'], timeperiod=20)
+# # Calculate the Exponential Moving Average (EMA)
+# df['EMA_10'] = ta.EMA(data['Close'], timeperiod=10)
+# df['EMA_20'] = ta.EMA(data['Close'], timeperiod=20)
 
-# Calculate the Relative Strength Index (RSI) with a time period of 14
-df['RSI_7d'] = ta.RSI(data['Close'], timeperiod=7)
-df['RSI_9d'] = ta.RSI(data['Close'], timeperiod=9)
-df['RSI_14d'] = ta.RSI(data['Close'], timeperiod=14)
+# # Calculate the Relative Strength Index (RSI) with a time period of 14
+# df['RSI_7d'] = ta.RSI(data['Close'], timeperiod=7)
+# df['RSI_9d'] = ta.RSI(data['Close'], timeperiod=9)
+# df['RSI_14d'] = ta.RSI(data['Close'], timeperiod=14)
 
 
 fig = go.Figure(data=[go.Candlestick(x=df['Date'],
