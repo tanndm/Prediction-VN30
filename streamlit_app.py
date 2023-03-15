@@ -40,7 +40,7 @@ with col4:
 with col5:
   st.metric(label="Support", value="142")
 
-col01, col6, col7, col8, col9 = st.columns(4)
+col01, col6, col7, col8, col9 = st.columns(5)
 with col01:
   st.metric(label="", value="Label 1")
 with col6:
@@ -52,7 +52,7 @@ with col8:
 with col9:
   st.metric(label="Support", value="161")
 
-col13, col1, col10, col11, col12 = st.columns(4)
+col13, col1, col10, col11, col12 = st.columns(5)
 
 with col11:
   st.metric(label="Accuracy", value="71%")
