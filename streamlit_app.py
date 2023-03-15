@@ -48,7 +48,7 @@ fig2 = go.Figure(data=[go.Table(header=dict(
                     "High", "Low"]),
               cells=dict(values=[df[k].tolist() for k in df.columns[:-1]]))
                      ])
-fig.update_layout(
+fig2.update_layout(
     height=400,
     showlegend=False,
     title_text="VN30-Index data table from 2017 to 2023",
@@ -56,11 +56,9 @@ fig.update_layout(
 
 click_data = st.checkbox('Click here to show out all of historical data of VN30-Index')
 if click_data:
-  fig.update_layout(xaxis_rangeslider_visible=False)
   st.plotly_chart(fig2, theme="streamlit", use_container_width=True)
 
-  
-st.header("Reoprt model")
+st.header("Report model")
 col00, col2, col3, col4, col5 = st.columns(5)
 with col00:
   st.metric(label="", value="Label 0")
@@ -86,9 +84,10 @@ with col9:
   st.metric(label="Support", value="161")
 
 col13, col1, col10, col11, col12 = st.columns(5)
-
-with col11:
+with col10:
   st.metric(label="Accuracy", value="71%")
+with col11:
+  st.metric(label="F1-score", value="71%")
 with col12:
   st.metric(label="Support", value="303")  
   
