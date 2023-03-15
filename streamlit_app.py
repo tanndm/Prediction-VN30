@@ -125,7 +125,7 @@ if option == 'Manual Input':
     if submitted:     
       with st.spinner('Wait for it...'):
         time.sleep(5)
-      if not (RSI_14d_lag is None):
+      if not (RSI_14d_lag == 0.00):
         st.success('This is a success updating!', icon="✅")
       else:
         st.warning('This is a warning', icon="⚠️")
