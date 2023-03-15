@@ -6,7 +6,7 @@ import joblib
 import webbrowser as wb
 import streamlit as st
 import time
-import talib as ta
+# import talib as ta
 
 
 # check if the library folder already exists, to avoid building everytime you load the pahe
@@ -40,11 +40,11 @@ from ctypes import *
 lib = CDLL("/home/appuser/lib/libta_lib.so.0.0.0")
 # import library
 try:
-    import talib
+    import talib as ta
 except ImportError:
     subprocess.check_call([sys.executable, "-m", "pip", "install", "--global-option=build_ext", "--global-option=-L/home/appuser/lib/", "--global-option=-I/home/appuser/include/", "ta-lib"])
 finally:
-    import talib
+    import talib as ta
     
 # -- Set page config
 apptitle = 'Predict VN30-index price movement using financial news and technical analysis'
