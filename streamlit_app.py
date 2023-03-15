@@ -125,7 +125,6 @@ if option == 'Manual Input':
       with st.spinner('Wait for it...'):
         time.sleep(5)
       st.success('This is a success updating!', icon="✅")
-#       st.success(f'VN30 will uptrend {pred}', icon="✅")
 else:
   uploaded_files = st.file_uploader("Choose a CSV file", accept_multiple_files=True)
   for uploaded_file in uploaded_files:
