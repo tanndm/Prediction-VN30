@@ -80,15 +80,15 @@ if option == 'Manual Input':
     with ta7:
       RSI_14d_lag = st.number_input("Feature 15")
 
-#     # Creating new feature Average Bill Amount 
-#     features= ['bid_quality', 'bid_volume', 'ask_quality', 'ask_volume', 'matching_volume', 'matching_volume',
-#                'Positive', 'Negative', 'SMA_10_lag', 'SMA_20_lag', 'EMA_10_lag', 'EMA_20_lag', 'RSI_7d_lag', 'RSI_9d_lag', 'RSI_14d_lag']
-#     pred = scaler.predict(np.array(features,ndmin=2))
+    # Prediction
+    features= ['bid_quality', 'bid_volume', 'ask_quality', 'ask_volume', 'matching_volume', 'matching_volume',
+               'Positive', 'Negative', 'SMA_10_lag', 'SMA_20_lag', 'EMA_10_lag', 'EMA_20_lag', 'RSI_7d_lag', 'RSI_9d_lag', 'RSI_14d_lag']
+    pred = scaler.predict(np.array(features,ndmin=2))
     
     submitted = st.form_submit_button("Submit data") 
     if submitted:
       st.success('This is a success updating!', icon="✅")
-      st.success('VN30 will uptrend', icon="✅")
+      st.success(f'VN30 will uptrend {pred}', icon="✅")
 else:
   uploaded_files = st.file_uploader("Choose a CSV file", accept_multiple_files=True)
   for uploaded_file in uploaded_files:
