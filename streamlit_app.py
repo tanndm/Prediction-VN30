@@ -174,8 +174,8 @@ if option == 'Manual Input':
     if submitted_2:     
       with st.spinner('Wait for it...'):
         time.sleep(3)
-      pred_out(pred)
-      st.write(pred)
+#       pred_out(pred)
+      st.info(pred)
 
 else:
   uploaded_files = st.file_uploader("Choose a CSV file", accept_multiple_files=True)
