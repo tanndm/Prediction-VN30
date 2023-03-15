@@ -47,6 +47,11 @@ fig2 = go.Figure(data=[go.Table(header=dict(
                     "High", "Low"]),
               cells=dict(values=[df[k].tolist() for k in df.columns[:-1]]))
                      ])
+fig.update_layout(
+    height=400,
+    showlegend=False,
+    title_text="VN30-Index data table from 2017 to 2023",
+)
 
 click_data = st.checkbox('Click here to show out all of historical data of VN30-Index')
 if click_data:
