@@ -27,17 +27,16 @@ def pred_out(num):
 st.title('Application :blue[Deep Learning] and :red[Machine Learning] in predicting VN30-index price movement using financial news and technical analysis')
 
 import plotly.graph_objects as go
-# df = pd.read_csv('https://raw.githubusercontent.com/plotly/datasets/master/finance-charts-apple.csv')
+df = pd.read_csv('vn30-his.csv',index_col=0)
 
-# fig = go.Figure(data=[go.Candlestick(x=df['Date'],
-#                 open=df['AAPL.Open'],
-#                 high=df['AAPL.High'],
-#                 low=df['AAPL.Low'],
-#                 close=df['AAPL.Close'])])
+fig = go.Figure(data=[go.Candlestick(x=df['Date'],
+                open=df['Open'],
+                high=df['High'],
+                low=df['Low'],
+                close=df['Close'])])
+fig.show()
 
-# fig.show()
-
-chart_data = pd.read_csv("historical-vn30.csv",index_col=0)
+chart_data = pd.read_csv("vn30-his.csv",index_col=0)
 st.dataframe(chart_data)
 
 st.header("Reoprt model")
