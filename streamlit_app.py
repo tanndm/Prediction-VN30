@@ -126,6 +126,12 @@ if option == 'Manual Input':
       with st.spinner('Wait for it...'):
         time.sleep(5)
       st.success('This is a success updating!', icon="✅")
+#       st.info('Next day, VN30-index will uptrend', icon="ℹ️")
+    
+    submitted_2 = st.form_submit_button("Get result") 
+    if submitted_2:     
+      with st.spinner('Wait for it...'):
+        time.sleep(5)
       st.info('Next day, VN30-index will uptrend', icon="ℹ️")
 else:
   uploaded_files = st.file_uploader("Choose a CSV file", accept_multiple_files=True)
