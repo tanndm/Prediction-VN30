@@ -26,10 +26,9 @@ def pred_out(num):
 
 st.title('Application :blue[Deep Learning] and :red[Machine Learning] in predicting VN30-index price movement using financial news and technical analysis')
 
-
+import plotly.graph_objects as go
 
 chart_data = pd.read_csv("historical-vn30.csv",index_col=0)
-st.line_chart(chart_data)
 st.dataframe(chart_data)
 
 st.header("Reoprt model")
