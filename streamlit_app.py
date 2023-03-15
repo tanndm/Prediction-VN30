@@ -22,7 +22,7 @@ scaler = joblib.load(S_file)
 def pred_out(num):
   if num == 1:
     st.info('THE VN30-INDEX WILL :green[BE UPTREND]', icon="ℹ️")
-  else:
+  elif num == 0:
     st.info('THE VN30-INDEX WILL BE :red[DOWNTREND]', icon="ℹ️")
 
 st.title('Application :blue[Deep Learning] and :red[Machine Learning] in predicting VN30-index price movement using financial news and technical analysis')
@@ -175,6 +175,7 @@ if option == 'Manual Input':
       with st.spinner('Wait for it...'):
         time.sleep(3)
       pred_out(pred)
+      st.write(pred)
 
 else:
   uploaded_files = st.file_uploader("Choose a CSV file", accept_multiple_files=True)
