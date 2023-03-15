@@ -28,7 +28,7 @@ st.title('Application :blue[Deep Learning] and :red[Machine Learning] in predict
 
 
 
-chart_data = pd.read_csv("https://raw.githubusercontent.com/BrianNguyen2001/Crawling-data-from-web/main/historical-vn30.csv",index_col=0)
+chart_data = pd.read_csv(r"https://raw.githubusercontent.com/BrianNguyen2001/Crawling-data-from-web/main/historical-vn30.csv",index_col=0)
 # st.line_chart(chart_data)
 st.dataframe(chart_data)
 
