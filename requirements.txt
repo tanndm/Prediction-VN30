@@ -2,3 +2,4 @@ catboost
 joblib
 numpy
 pandas
+tablib
