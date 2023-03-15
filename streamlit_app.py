@@ -34,7 +34,8 @@ fig = go.Figure(data=[go.Candlestick(x=df['Date'],
                 high=df['High'],
                 low=df['Low'],
                 close=df['Close'])])
-fig.show()
+
+st.plotly_chart(fig, theme="streamlit", use_container_width=True)
 
 chart_data = pd.read_csv("vn30-his.csv")
 st.dataframe(chart_data)
