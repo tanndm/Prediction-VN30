@@ -4,3 +4,4 @@ numpy
 pandas
 tablib
 ta
+TA-Lib
