@@ -6,7 +6,7 @@ import joblib
 import webbrowser as wb
 import streamlit as st
 import time
-# import talib as ta
+import os
 
 
 # check if the library folder already exists, to avoid building everytime you load the pahe
