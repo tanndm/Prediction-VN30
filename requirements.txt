@@ -2,5 +2,3 @@ catboost
 joblib
 numpy
 pandas
-tablib
-requests
