@@ -125,8 +125,10 @@ if option == 'Manual Input':
     if submitted:     
       with st.spinner('Wait for it...'):
         time.sleep(5)
-      st.success('This is a success updating!', icon="✅")
-#       st.info('Next day, VN30-index will uptrend', icon="ℹ️")
+      if not (RSI_14d_lag is None):
+        st.success('This is a success updating!', icon="✅")
+      else:
+        st.warning('This is a warning', icon="⚠️")
     
     submitted_2 = st.form_submit_button("Get result") 
     if submitted_2:     
