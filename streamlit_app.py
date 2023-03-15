@@ -35,6 +35,7 @@ fig = go.Figure(data=[go.Candlestick(x=df['Date'],
                 low=df['Low'],
                 close=df['Close'])])
 
+fig.update_layout(xaxis_rangeslider_visible=False)
 st.plotly_chart(fig, theme="streamlit", use_container_width=True)
 
 chart_data = pd.read_csv("vn30-his.csv")
