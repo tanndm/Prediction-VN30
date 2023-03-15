@@ -35,9 +35,9 @@ fig = go.Figure(data=[go.Candlestick(x=df['Date'],
                 low=df['Low'],
                 close=df['Close'])])
 fig.update_layout(
-    height=800,
-    showlegend=True,
-    title_text="Bitcoin mining stats for 180 days",
+    height=600,
+    showlegend=False,
+    title_text="VN30-Index Candlestick chart from 2017 to 2023",
 )
 fig.update_layout(xaxis_rangeslider_visible=False)
 st.plotly_chart(fig, theme="streamlit", use_container_width=True)
