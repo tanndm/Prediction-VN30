@@ -5,6 +5,7 @@ import joblib
 # Importing all required modules 
 import webbrowser as wb
 import streamlit as st
+import time
 
 # -- Set page config
 apptitle = 'Predict VN30-index price movement using financial news and technical analysis'
