@@ -34,7 +34,11 @@ fig = go.Figure(data=[go.Candlestick(x=df['Date'],
                 high=df['High'],
                 low=df['Low'],
                 close=df['Close'])])
-
+fig.update_layout(
+    height=800,
+    showlegend=True,
+    title_text="Bitcoin mining stats for 180 days",
+)
 fig.update_layout(xaxis_rangeslider_visible=False)
 st.plotly_chart(fig, theme="streamlit", use_container_width=True)
 
