@@ -122,7 +122,7 @@ if option == 'Manual Input':
     res_df = pd.DataFrame({'bid_quality':bid_quality, 'bid_volume':bid_volume, 'ask_quality':ask_quality, 'ask_volume':ask_volume,
                            'matching_volume':matching_volume, 'negotiable_volume':negotiable_volume, 'Positive':positive, 'Negative':negative,
                            'SMA_10':SMA_10_lag, 'SMA_20':SMA_20_lag, 'EMA_10':EMA_10_lag, 'EMA_20':EMA_20_lag, 'RSI_7d':RSI_7d_lag, 
-                           'RSI_9d':RSI_9d_lag, 'RSI_14d':RSI_14d_lag})
+                           'RSI_9d':RSI_9d_lag, 'RSI_14d':RSI_14d_lag},index=["05-01-2023"])
 #     pred = scaler.predict(np.array(features,ndmin=2))
     
     submitted = st.form_submit_button("Submit data") 
