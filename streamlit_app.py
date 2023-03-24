@@ -48,7 +48,7 @@ fig = go.Figure(data=[go.Candlestick(x=df['Date'],
                 high=df['High'],
                 low=df['Low'],
                 close=df['Close'],
-                sma_10=df['sma_10'])])
+                sma_10=df['sma_10'])
 fig.update_layout(
     height=700,
     showlegend=False,
