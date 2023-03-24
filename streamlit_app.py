@@ -27,7 +27,7 @@ def pred_out(num):
 st.title('Application :blue[Deep Learning] and :red[Machine Learning] in predicting VN30-index price movement using financial news and technical analysis')
 
 import plotly.graph_objects as go
-df = pd.read_csv('vn30-his.csv')
+df = pd.read_csv('vn30-his-2.csv')
 
 # # Calculate the Moving Average
 # df['SMA10'] = ta.SMA(df['Close'], timeperiod=10)
@@ -59,9 +59,13 @@ st.plotly_chart(fig, theme="streamlit", use_container_width=True)
 
 fig2 = go.Figure(data=[go.Table(header=dict(
               values=["Date", "Close", "Open",
-                    "High", "Low"]),
+                    "High", "Low",'sma_10', 
+                    'sma_20', 'ema_10', 'ema_20',
+                     'rsi_7', 'rsi_9', 'rsi_14']),
               cells=dict(values=[df[k].tolist() for k in df.columns[:-1]]))
                      ])
+
+    
 fig2.update_layout(
     height=400,
     showlegend=False,
