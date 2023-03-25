@@ -58,7 +58,7 @@ dropdown_options = list(time_periods.keys())
 # Add dropdown menu to Streamlit app
 time_period = st.selectbox(dropdown_label, dropdown_options)
 
-st.write(time_periods[time_period][0])
+st.write(time.date(time_periods[time_period][0]))
 # # Filter data for selected time period
 # start_date = time_periods[time_period][0]
 # df_filtered = df.loc[start_date:]
