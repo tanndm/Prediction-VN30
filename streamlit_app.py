@@ -278,6 +278,7 @@ if option == 'Manual Input':
           time.sleep(3)
         st.success('This is a success updating!', icon="✅")
         st.dataframe(res_df)
+        pred_out(pred)
       else:
         check_data = False
         with st.spinner('Wait for it...'):
