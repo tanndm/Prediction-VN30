@@ -153,7 +153,7 @@ st.plotly_chart(fig_rsi, theme="streamlit", use_container_width=True)
 
 fig2 = go.Figure(data=[go.Table(
     header=dict(values=list(df_filtered.columns)),
-    cells=dict(values=[pd.to_datetime(df_filtered.index), df_filtered.Close, df_filtered.Open,
+    cells=dict(values=[pd.to_date(df_filtered.index), df_filtered.Close, df_filtered.Open,
                        df_filtered.High, df_filtered.Low, df_filtered.sma_10,
                        df_filtered.sma_20,df_filtered.ema_10,df_filtered.ema_20,
                        df_filtered.rsi_7, df_filtered.rsi_9, df_filtered.rsi_14]))
