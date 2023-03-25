@@ -89,9 +89,9 @@ fig.update_layout(
 # rsi_7_trace = go.Scatter(x=df['Date'], y=df['rsi_7'], name='RSI-7', visible=True)
 
 # Add SMA, EMA, and RSI traces to figure
-fig.add_trace(go.Scatter(x=df['Date'], y=df['sma_10'], name='SMA-10', visible=True))
-fig.add_trace(go.Scatter(x=df['Date'], y=df['ema_10'], name='EMA-10', visible=True))
-fig.add_trace(go.Scatter(go.Scatter(x=df['Date'], y=df['rsi_7'], name='RSI-7', visible=True))
+fig.add_trace(go.Scatter(x=df['Date'], y=df['sma_10'], name='SMA-10'))
+fig.add_trace(go.Scatter(x=df['Date'], y=df['ema_10'], name='EMA-10'))
+fig.add_trace(go.Scatter(go.Scatter(x=df['Date'], y=df['rsi_7'], name='RSI-7'))
 
 # Define button label and default visibility
 button_label = 'Hide SMA, EMA, RSI'
