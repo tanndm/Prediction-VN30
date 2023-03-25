@@ -60,7 +60,7 @@ time_period = st.selectbox(dropdown_label, dropdown_options)
 
 # Filter data for selected time period
 start_date = time_periods[time_period][0]
-df_filtered.index = df["Date"].loc[start_date:]
+df_filtered = df["Date"].loc[start_date:]
 
 # Update candlestick chart data
 fig.update_traces(x=df_filtered.index,
