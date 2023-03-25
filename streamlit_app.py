@@ -267,7 +267,7 @@ if option == 'Manual Input':
     
     pred = scaler.predict(np.array(features,ndmin=2))
     
-    submitted = st.form_submit_button("Submit data") 
+    submitted = st.form_submit_button("Forecast buttom") 
     check_data = False
     if submitted:     
       if (RSI_14d_lag != 0.00 and bid_quality != 0.00 and bid_volume != 0.00 and ask_quality != 0.00 and ask_volume != 0.00 
@@ -275,7 +275,7 @@ if option == 'Manual Input':
           and RSI_7d_lag != 0.00 and RSI_9d_lag != 0.00 and RSI_14d_lag != 0.00):
         check_data = True
         with st.spinner('Wait for it...'):
-          time.sleep(3)
+          time.sleep(2)
         st.success('This is a success updating!', icon="✅")
         st.dataframe(res_df)
         pred_out(pred)
@@ -292,15 +292,7 @@ if option == 'Manual Input':
 #       pred_out(pred)
 #     else:
 #       st.warning('You do not input enough neccessary features', icon="⚠️")
-      if check_data:
-        submitted_2 = st.form_submit_button("Get result") 
-        if submitted_2:
-            pred_out(pred)
-#           with st.spinner('Wait for it...'):
-#             time.sleep(3)
-#           pred_out(pred)
-#         else:
-#           st.warning('You do not input enough neccessary features', icon="⚠️")
+
     
 elif option == 'Upload a file':
   uploaded_files = st.file_uploader("Choose a CSV file", accept_multiple_files=True)
