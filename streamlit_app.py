@@ -94,7 +94,8 @@ fig.add_trace(go.Scatter(x=df['Date'], y=df['ema_10'], name='EMA-10'))
 fig.add_trace(go.Scatter(go.Scatter(x=df['Date'], y=df['rsi_7'], name='RSI-7'))
 
 # Define button label and default visibility
-button_label = 'Hide SMA, EMA, RSI'
+
+button_label = 'SMA, EMA, RSI'
 visible = True
 
 # Add button to Streamlit app
