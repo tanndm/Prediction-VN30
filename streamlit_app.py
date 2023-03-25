@@ -297,8 +297,8 @@ if option == 'Manual Input':
           with st.spinner('Wait for it...'):
             time.sleep(3)
           pred_out(pred)
-        else:
-          st.warning('You do not input enough neccessary features', icon="⚠️")
+#         else:
+#           st.warning('You do not input enough neccessary features', icon="⚠️")
     
 elif option == 'Upload a file':
   uploaded_files = st.file_uploader("Choose a CSV file", accept_multiple_files=True)
