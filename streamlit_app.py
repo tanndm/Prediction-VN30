@@ -269,7 +269,9 @@ if option == 'Manual Input':
     
     submitted = st.form_submit_button("Submit data") 
     if submitted:     
-      if (RSI_14d_lag != 0.00):
+      if (RSI_14d_lag != 0.00 and bid_quality != 0.00 and bid_volume != 0.00 and ask_quality != 0.00 and ask_volume != 0.00 
+          and matching_volume != 0.00 and SMA_10_lag != 0.00 and SMA_20_lag != 0.00 and EMA_10_lag != 0.00 and EMA_20_lag != 0.00
+          and RSI_7d_lag != 0.00 and RSI_9d_lag != 0.00 and RSI_14d_lag != 0.00):
         with st.spinner('Wait for it...'):
           time.sleep(3)
         st.success('This is a success updating!', icon="✅")
