@@ -79,17 +79,17 @@ sma_10_trace = go.Scatter(x=df_filtered.index, y=df_filtered['sma_10'], name='SM
 sma_20_trace = go.Scatter(x=df_filtered.index, y=df_filtered['sma_20'], name='SMA-20', visible=True)
 ema_10_trace = go.Scatter(x=df_filtered.index, y=df_filtered['ema_10'], name='EMA-10', visible=True)
 ema_20_trace = go.Scatter(x=df_filtered.index, y=df_filtered['ema_20'], name='EMA-20', visible=True)
-rsi_7_trace = go.Scatter(x=df_filtered.index, y=df_filtered['rsi_7'], name='RSI-7', visible=True)
-rsi_9_trace = go.Scatter(x=df_filtered.index, y=df_filtered['rsi_9'], name='RSI-9', visible=True)
-rsi_14_trace = go.Scatter(x=df_filtered.index, y=df_filtered['rsi_14'], name='RSI-14', visible=True)
+# rsi_7_trace = go.Scatter(x=df_filtered.index, y=df_filtered['rsi_7'], name='RSI-7', visible=True)
+# rsi_9_trace = go.Scatter(x=df_filtered.index, y=df_filtered['rsi_9'], name='RSI-9', visible=True)
+# rsi_14_trace = go.Scatter(x=df_filtered.index, y=df_filtered['rsi_14'], name='RSI-14', visible=True)
 
 fig.add_trace(sma_10_trace)
 fig.add_trace(sma_20_trace)
 fig.add_trace(ema_10_trace)
 fig.add_trace(ema_20_trace)
-fig.add_trace(rsi_7_trace)
-fig.add_trace(rsi_9_trace)
-fig.add_trace(rsi_14_trace)
+# fig.add_trace(rsi_7_trace)
+# fig.add_trace(rsi_9_trace)
+# fig.add_trace(rsi_14_trace)
 
 # Define button label and default visibility
 button_label = 'Show all Technical analysis indicators'
@@ -103,9 +103,9 @@ if st.button(button_label):
         sma_20_trace.visible = True
         ema_10_trace.visible = True
         ema_20_trace.visible = True
-        rsi_7_trace.visible = True
-        rsi_9_trace.visible = True
-        rsi_14_trace.visible = True
+#         rsi_7_trace.visible = True
+#         rsi_9_trace.visible = True
+#         rsi_14_trace.visible = True
         button_label = 'Show Technical analysis indicators'
     # Update figure layout to adjust trace visibility
     fig.update_layout(showlegend=True)
@@ -127,6 +127,17 @@ fig.update_layout(xaxis_rangeslider_visible=False)
 
 st.plotly_chart(fig, theme="streamlit", use_container_width=True)
 #########################################################################################
+rsi_7_trace = go.Scatter(x=df_filtered.index, y=df_filtered['rsi_7'], name='RSI-7', visible=True)
+rsi_9_trace = go.Scatter(x=df_filtered.index, y=df_filtered['rsi_9'], name='RSI-9', visible=True)
+rsi_14_trace = go.Scatter(x=df_filtered.index, y=df_filtered['rsi_14'], name='RSI-14', visible=True)
+
+
+fig_rsi = go.Figure(data=[rsi_7_trace,rsi_9_trace,rsi_14_trace])
+
+fig.update_layout(xaxis_rangeslider_visible=False)
+st.plotly_chart(fig_rsi, theme="streamlit", use_container_width=True)
+#########################################################################################
+
 df_2 = pd.read_csv('vn30-his-2.csv')
 fig2 = go.Figure(data=[go.Table(header=dict(
               values=["Date","Close", "Open",
