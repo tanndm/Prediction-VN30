@@ -28,17 +28,17 @@ st.title('Application :blue[Deep Learning] and :red[Machine Learning] in predict
 
 ###############################################################################################
 import plotly.graph_objects as go
-df = pd.read_csv('vn30-his-2.csv')
+df = pd.read_csv('vn30-his-2.csv',index_col=0)
 
 time_periods = {
-    '1 week': pd.date_range(end=df['Date'].iloc[-1], periods=5, freq=pd.tseries.offsets.BDay()),
-    '1 month': pd.date_range(end=df['Date'].iloc[-1], periods=20, freq=pd.tseries.offsets.BDay()),
-    '6 months': pd.date_range(end=df['Date'].iloc[-1], periods=120, freq=pd.tseries.offsets.BDay()),
-    '1 year': pd.date_range(end=df['Date'].iloc[-1], periods=252, freq=pd.tseries.offsets.BDay()),
-    '5 years': pd.date_range(end=df['Date'].iloc[-1], periods=1260, freq=pd.tseries.offsets.BDay())
+    '1 week': pd.date_range(end=df.index[-1], periods=5, freq=pd.tseries.offsets.BDay()),
+    '1 month': pd.date_range(end=df.index[-1], periods=20, freq=pd.tseries.offsets.BDay()),
+    '6 months': pd.date_range(end=df.index[-1], periods=120, freq=pd.tseries.offsets.BDay()),
+    '1 year': pd.date_range(end=df.index[-1], periods=252, freq=pd.tseries.offsets.BDay()),
+    '5 years': pd.date_range(end=df.index[-1], periods=1260, freq=pd.tseries.offsets.BDay())
 }
 
-fig = go.Figure(data=[go.Candlestick(x=df['Date'],
+fig = go.Figure(data=[go.Candlestick(x=df.index,
                 open=df['Open'],
                 high=df['High'],
                 low=df['Low'],
@@ -60,7 +60,7 @@ time_period = st.selectbox(dropdown_label, dropdown_options)
 
 # Filter data for selected time period
 start_date = time_periods[time_period][0]
-df_filtered = df["Date"].loc[start_date:]
+df_filtered = df.loc[start_date:]
 
 # Update candlestick chart data
 fig.update_traces(x=df_filtered.index,
