@@ -89,37 +89,37 @@ fig.add_trace(rsi_7_trace)
 fig.add_trace(rsi_9_trace)
 fig.add_trace(rsi_14_trace)
 
-# # Define button label and default visibility
-# button_label = 'Show all Technical analysis indicators'
-# visible = True
+# Define button label and default visibility
+button_label = 'Show all Technical analysis indicators'
+visible = True
 
-# # Add button to Streamlit app
-# if st.button(button_label):
-#     visible = not visible
-#     if visible:
-#         sma_10_trace.visible = True
-#         sma_20_trace.visible = True
-#         ema_10_trace.visible = True
-#         ema_20_trace.visible = True
-#         rsi_7_trace.visible = True
-#         rsi_9_trace.visible = True
-#         rsi_14_trace.visible = True
-#         button_label = 'Show Technical analysis indicators'
-#     # Update figure layout to adjust trace visibility
-#     fig.update_layout(showlegend=True)
+# Add button to Streamlit app
+if st.button(button_label):
+    visible = not visible
+    if visible:
+        sma_10_trace.visible = True
+        sma_20_trace.visible = True
+        ema_10_trace.visible = True
+        ema_20_trace.visible = True
+        rsi_7_trace.visible = True
+        rsi_9_trace.visible = True
+        rsi_14_trace.visible = True
+        button_label = 'Show Technical analysis indicators'
+    # Update figure layout to adjust trace visibility
+    fig.update_layout(showlegend=True)
 
-# # Update figure layout to adjust legend and axis labels
-# fig.update_layout(
-#     legend=dict(
-#         orientation="h",
-#         yanchor="bottom",
-#         y=1.02,
-#         xanchor="right",
-#         x=1
-#     ),
-#     xaxis_title="Date",
-#     yaxis_title="Price"
-# )
+# Update figure layout to adjust legend and axis labels
+fig.update_layout(
+    legend=dict(
+        orientation="h",
+        yanchor="bottom",
+        y=1.02,
+        xanchor="right",
+        x=1
+    ),
+    xaxis_title="Date",
+    yaxis_title="Price"
+)
 
 fig.update_layout(xaxis_rangeslider_visible=False)
 
