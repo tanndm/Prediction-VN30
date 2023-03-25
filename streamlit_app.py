@@ -28,7 +28,9 @@ st.title('Application :blue[Deep Learning] and :red[Machine Learning] in predict
 
 ###############################################################################################
 import plotly.graph_objects as go
-df = pd.read_csv('vn30-his-2.csv',index_col=0)
+df = pd.read_csv('vn30-his-2.csv')
+df['Date'] = pd.to_datetime(df['Date'])
+df = df.set_index('Date')
 
 time_periods = {
     '1 week': pd.date_range(end=df.index[-1], periods=5, freq=pd.tseries.offsets.BDay()),
@@ -58,7 +60,7 @@ dropdown_options = list(time_periods.keys())
 # Add dropdown menu to Streamlit app
 time_period = st.selectbox(dropdown_label, dropdown_options)
 
-st.write(time.date(time_periods[time_period][0]))
+st.write(time_periods[time_period][0])
 # # Filter data for selected time period
 # start_date = time_periods[time_period][0]
 # df_filtered = df.loc[start_date:]
