@@ -85,21 +85,21 @@ fig.add_trace(sma_20_trace)
 fig.add_trace(ema_10_trace)
 fig.add_trace(ema_20_trace)
 
-# Define button label and default visibility
-button_label = 'Show all Technical analysis indicators'
-visible = True
+# # Define button label and default visibility
+# button_label = 'Show all Technical analysis indicators'
+# visible = True
 
-# Add button to Streamlit app
-if st.button(button_label):
-    visible = not visible
-    if visible:
-        sma_10_trace.visible = True
-        sma_20_trace.visible = True
-        ema_10_trace.visible = True
-        ema_20_trace.visible = True
-        button_label = 'Hide Technical analysis indicators'
-    # Update figure layout to adjust trace visibility
-    fig.update_layout(showlegend=True)
+# # Add button to Streamlit app
+# if st.button(button_label):
+#     visible = not visible
+#     if visible:
+#         sma_10_trace.visible = True
+#         sma_20_trace.visible = True
+#         ema_10_trace.visible = True
+#         ema_20_trace.visible = True
+#         button_label = 'Hide Technical analysis indicators'
+#     # Update figure layout to adjust trace visibility
+#     fig.update_layout(showlegend=True)
 
 # Update figure layout to adjust legend and axis labels
 fig.update_layout(
@@ -115,7 +115,6 @@ fig.update_layout(
 )
 
 fig.update_layout(xaxis_rangeslider_visible=False)
-
 st.plotly_chart(fig, theme="streamlit", use_container_width=True)
 #########################################################################################
 rsi_7_trace = go.Scatter(x=df_filtered.index, y=df_filtered['rsi_7'], name='RSI-7', visible=True)
