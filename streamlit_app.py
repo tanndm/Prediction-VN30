@@ -65,12 +65,12 @@ st.write(time_periods[time_period][0])
 start_date = time_periods[time_period][0]
 df_filtered = df.loc[start_date:]
 
-# # Update candlestick chart data
-# fig.update_traces(x=df_filtered.index,
-#                   open=df_filtered['Open'],
-#                   high=df_filtered['High'],
-#                   low=df_filtered['Low'],
-#                   close=df_filtered['Close'])
+# Update candlestick chart data
+fig.update_traces(x=df_filtered.index,
+                  open=df_filtered['Open'],
+                  high=df_filtered['High'],
+                  low=df_filtered['Low'],
+                  close=df_filtered['Close'])
 
 # ##########################################################################################
 # sma_10_trace = go.Scatter(x=df['Date'], y=df['sma_10'], name='SMA-10', visible=True)
