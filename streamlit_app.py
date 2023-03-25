@@ -43,9 +43,45 @@ fig.update_layout(
 
 fig.update_layout(xaxis_rangeslider_visible=False)
 
-fig.add_trace(go.Scatter(x=df['Date'], y=df['sma_10'], name='SMA-10'))
-fig.add_trace(go.Scatter(x=df['Date'], y=df['ema_10'], name='EMA-10'))
-fig.add_trace(go.Scatter(x=df['Date'], y=df['rsi_7'], name='RSI-7'))
+sma_10_trace = go.Scatter(x=df['Date'], y=df['sma_10'], name='SMA-10')
+ema_10_trace = go.Scatter(x=df['Date'], y=df['ema_10'], name='EMA-10')
+rsi_7_trace = go.Scatter(x=df['Date'], y=df['rsi_7'], name='RSI-7')
+
+
+fig.add_trace(sma_10_trace)
+fig.add_trace(ema_10_trace)
+fig.add_trace(rsi_7_trace)
+
+# Define button label and default visibility
+button_label = 'Hide SMA, EMA, RSI'
+visible = True
+
+# Add button to Streamlit app
+if st.button(button_label):
+    visible = not visible
+    if visible:
+        sma_trace.visible = True
+        ema_trace.visible = True
+        rsi_trace.visible = True
+        button_label = 'Hide SMA, EMA, RSI'
+    else:
+        sma_trace.visible = False
+        ema_trace.visible = False
+        rsi_trace.visible = False
+        button_label = 'Show SMA, EMA, RSI'
+
+# Update figure layout to adjust legend and axis labels
+fig.update_layout(
+    legend=dict(
+        orientation="h",
+        yanchor="bottom",
+        y=1.02,
+        xanchor="right",
+        x=1
+    ),
+    xaxis_title="Date",
+    yaxis_title="Price"
+)
 
 st.plotly_chart(fig, theme="streamlit", use_container_width=True)
 
