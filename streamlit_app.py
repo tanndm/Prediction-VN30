@@ -122,12 +122,13 @@ fig.update_layout(xaxis_rangeslider_visible=False)
 
 st.plotly_chart(fig, theme="streamlit", use_container_width=True)
 #########################################################################################
+
 fig2 = go.Figure(data=[go.Table(header=dict(
-              values=["Close", "Open",
+              values=["Date","Close", "Open",
                     "High", "Low",'sma_10', 
                     'sma_20', 'ema_10', 'ema_20',
                      'rsi_7', 'rsi_9', 'rsi_14']),
-              cells=dict(values=[df[k].tolist() for k in df.columns[:-1]]))
+              cells=dict(values=[df.index,df[k].tolist() for k in df.columns[:-1]]))
                      ])
 
     
