@@ -83,8 +83,8 @@ fig.update_layout(
     yaxis_title="Price"
 )
 
-st.plotly_chart(fig, theme="streamlit", use_container_width=True)
-
+st.plotly_chart(fig, theme="streamlit")
+# , use_container_width=True
 
 
 fig2 = go.Figure(data=[go.Table(header=dict(
