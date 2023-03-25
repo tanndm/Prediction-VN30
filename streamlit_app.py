@@ -142,16 +142,25 @@ fig_rsi.update_layout(xaxis_rangeslider_visible=False)
 st.plotly_chart(fig_rsi, theme="streamlit", use_container_width=True)
 #########################################################################################
 
-df_2 = pd.read_csv('vn30-his-2.csv')
-fig2 = go.Figure(data=[go.Table(header=dict(
-              values=["Date","Close", "Open",
-                    "High", "Low",'sma_10', 
-                    'sma_20', 'ema_10', 'ema_20',
-                     'rsi_7', 'rsi_9', 'rsi_14']),
-              cells=dict(values=[df_2[k].tolist() for k in df_2.columns[:-1]]))
-                     ])
+# df_2 = pd.read_csv('vn30-his-2.csv')
+# fig2 = go.Figure(data=[go.Table(header=dict(
+#               values=["Date","Close", "Open",
+#                     "High", "Low",'sma_10', 
+#                     'sma_20', 'ema_10', 'ema_20',
+#                      'rsi_7', 'rsi_9', 'rsi_14']),
+#               cells=dict(values=[df_2[k].tolist() for k in df_2.columns[:-1]]))
+#                      ])
 
-    
+fig2 = go.Figure(data=[go.Table(
+    header=dict(values=list(df_filtered.columns),
+                fill_color='paleturquoise'),
+    cells=dict(values=[df_filtered.index, df_filtered.Close, df_filtered.Open,
+                       df_filtered.High, df_filtered.Low, df_filtered.sma_10,
+                       df_filtered.sma_20,df_filtered.ema_10,df_filtered.ema_20,
+                       df_filtered.rsi_7, df_filtered.rsi_9, df_filtered.rsi_14],
+               fill_color='lavender'))
+])
+
 fig2.update_layout(
     height=400,
     showlegend=False,
