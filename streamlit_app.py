@@ -126,7 +126,7 @@ rsi_14_trace = go.Scatter(x=df_filtered.index, y=df_filtered['rsi_14'], name='RS
 fig_rsi = go.Figure(data=[rsi_7_trace,rsi_9_trace,rsi_14_trace])
 
 # Update figure layout to adjust legend and axis labels
-fig.update_layout(
+fig_rsi.update_layout(
     legend=dict(
         orientation="h",
         yanchor="bottom",
@@ -138,7 +138,7 @@ fig.update_layout(
     yaxis_title="Price"
 )
 
-fig.update_layout(xaxis_rangeslider_visible=False)
+fig_rsi.update_layout(xaxis_rangeslider_visible=False)
 st.plotly_chart(fig_rsi, theme="streamlit", use_container_width=True)
 #########################################################################################
 
