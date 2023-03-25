@@ -41,36 +41,74 @@ fig.update_layout(
     title_text="VN30-Index Candlestick chart from 2017 to 2023",
 )
 
-sma_10_trace = go.Scatter(x=df['Date'], y=df['sma_10'], name='SMA-10', visible=True)
-ema_10_trace = go.Scatter(x=df['Date'], y=df['ema_10'], name='EMA-10', visible=True)
-rsi_7_trace = go.Scatter(x=df['Date'], y=df['rsi_7'], name='RSI-7', visible=True)
+# sma_10_trace = go.Scatter(x=df['Date'], y=df['sma_10'], name='SMA-10', visible=True)
+# ema_10_trace = go.Scatter(x=df['Date'], y=df['ema_10'], name='EMA-10', visible=True)
+# rsi_7_trace = go.Scatter(x=df['Date'], y=df['rsi_7'], name='RSI-7', visible=True)
 
 
-fig.add_trace(sma_10_trace)
-fig.add_trace(ema_10_trace)
-fig.add_trace(rsi_7_trace)
+# fig.add_trace(sma_10_trace)
+# fig.add_trace(ema_10_trace)
+# fig.add_trace(rsi_7_trace)
+
+# # Define button label and default visibility
+# button_label = 'Technical analysis indicators'
+# visible = True
+
+# # Add button to Streamlit app
+# if st.button(button_label):
+#     visible = not visible
+#     if visible:
+#         sma_10_trace.visible = True
+#         ema_10_trace.visible = True
+#         rsi_7_trace.visible = True
+#         button_label = 'Hide Technical analysis indicators'
+#     else:
+#         sma_10_trace.visible = False
+#         ema_10_trace.visible = False
+#         rsi_7_trace.visible = False
+#         button_label = 'Show Technical analysis indicators'
+        
+#     # Update figure layout to adjust trace visibility
+#     fig.update_layout(showlegend=True)
+# #     fig.update_traces(visible='legendonly')
+
+# # Update figure layout to adjust legend and axis labels
+# fig.update_layout(
+#     legend=dict(
+#         orientation="h",
+#         yanchor="bottom",
+#         y=1.02,
+#         xanchor="right",
+#         x=1
+#     ),
+#     xaxis_title="Date",
+#     yaxis_title="Price"
+# )
+# sma_10_trace = go.Scatter(x=df['Date'], y=df['sma_10'], name='SMA-10', visible=True)
+# ema_10_trace = go.Scatter(x=df['Date'], y=df['ema_10'], name='EMA-10', visible=True)
+# rsi_7_trace = go.Scatter(x=df['Date'], y=df['rsi_7'], name='RSI-7', visible=True)
+
+# Add SMA, EMA, and RSI traces to figure
+fig.add_trace(go.Scatter(x=df['Date'], y=df['sma_10'], name='SMA-10', visible=True))
+fig.add_trace(go.Scatter(x=df['Date'], y=df['ema_10'], name='EMA-10', visible=True))
+fig.add_trace(go.Scatter(go.Scatter(x=df['Date'], y=df['rsi_7'], name='RSI-7', visible=True))
 
 # Define button label and default visibility
-button_label = 'Technical analysis indicators'
+button_label = 'Hide SMA, EMA, RSI'
 visible = True
 
 # Add button to Streamlit app
 if st.button(button_label):
     visible = not visible
     if visible:
-        sma_10_trace.visible = True
-        ema_10_trace.visible = True
-        rsi_7_trace.visible = True
-        button_label = 'Hide Technical analysis indicators'
+        fig.for_each_trace(lambda trace: trace.update(visible=True) if trace.name in ['SMA-10', 'EMA-10', 'RSI-7'] else ())
+        button_label = 'Hide SMA, EMA, RSI'
     else:
-        sma_10_trace.visible = False
-        ema_10_trace.visible = False
-        rsi_7_trace.visible = False
-        button_label = 'Show Technical analysis indicators'
-        
-    # Update figure layout to adjust trace visibility
+        fig.for_each_trace(lambda trace: trace.update(visible=False) if trace.name in ['SMA-10', 'EMA-10', 'RSI-7'] else ())
+        button_label = 'Show SMA, EMA, RSI'
+              
+              
     fig.update_layout(showlegend=True)
-#     fig.update_traces(visible='legendonly')
 
 # Update figure layout to adjust legend and axis labels
 fig.update_layout(
@@ -84,12 +122,14 @@ fig.update_layout(
     xaxis_title="Date",
     yaxis_title="Price"
 )
+
+
 fig.update_layout(xaxis_rangeslider_visible=False)
 
 st.plotly_chart(fig, theme="streamlit", use_container_width=True)
 
 
-
+#########################################################################################
 fig2 = go.Figure(data=[go.Table(header=dict(
               values=["Date", "Close", "Open",
                     "High", "Low",'sma_10', 
