@@ -50,6 +50,26 @@ fig.update_layout(
     title_text="VN30-Index Candlestick chart from 2017 to 2023",
 )
 
+########################################################################################
+# Define dropdown menu label and options
+dropdown_label = 'Select time period'
+dropdown_options = list(time_periods.keys())
+
+# Add dropdown menu to Streamlit app
+time_period = st.selectbox(dropdown_label, dropdown_options)
+
+# Filter data for selected time period
+start_date = time_periods[time_period][0]
+df_filtered = df["Date"].loc[start_date:]
+
+# Update candlestick chart data
+fig.update_traces(x=df_filtered.index,
+                  open=df_filtered['Open'],
+                  high=df_filtered['High'],
+                  low=df_filtered['Low'],
+                  close=df_filtered['Close'])
+
+##########################################################################################
 sma_10_trace = go.Scatter(x=df['Date'], y=df['sma_10'], name='SMA-10', visible=True)
 sma_20_trace = go.Scatter(x=df['Date'], y=df['sma_20'], name='SMA-20', visible=True)
 ema_10_trace = go.Scatter(x=df['Date'], y=df['ema_10'], name='EMA-10', visible=True)
