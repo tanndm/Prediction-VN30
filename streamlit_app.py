@@ -73,21 +73,21 @@ fig.update_traces(x=df_filtered.index,
                   close=df_filtered['Close'])
 
 # ##########################################################################################
-# sma_10_trace = go.Scatter(x=df['Date'], y=df['sma_10'], name='SMA-10', visible=True)
-# sma_20_trace = go.Scatter(x=df['Date'], y=df['sma_20'], name='SMA-20', visible=True)
-# ema_10_trace = go.Scatter(x=df['Date'], y=df['ema_10'], name='EMA-10', visible=True)
-# ema_20_trace = go.Scatter(x=df['Date'], y=df['ema_20'], name='EMA-20', visible=True)
-# rsi_7_trace = go.Scatter(x=df['Date'], y=df['rsi_7'], name='RSI-7', visible=True)
-# rsi_9_trace = go.Scatter(x=df['Date'], y=df['rsi_9'], name='RSI-9', visible=True)
-# rsi_14_trace = go.Scatter(x=df['Date'], y=df['rsi_14'], name='RSI-14', visible=True)
+sma_10_trace = go.Scatter(x=df_filtered.index, y=df_filtered['sma_10'], name='SMA-10', visible=True)
+sma_20_trace = go.Scatter(x=df_filtered.index, y=df_filtered['sma_20'], name='SMA-20', visible=True)
+ema_10_trace = go.Scatter(x=df_filtered.index, y=df_filtered['ema_10'], name='EMA-10', visible=True)
+ema_20_trace = go.Scatter(x=df_filtered.index, y=df_filtered['ema_20'], name='EMA-20', visible=True)
+rsi_7_trace = go.Scatter(x=df_filtered.index, y=df_filtered['rsi_7'], name='RSI-7', visible=True)
+rsi_9_trace = go.Scatter(x=df_filtered.index, y=df_filtered['rsi_9'], name='RSI-9', visible=True)
+rsi_14_trace = go.Scatter(x=df_filtered.index, y=df_filtered['rsi_14'], name='RSI-14', visible=True)
 
-# fig.add_trace(sma_10_trace)
-# fig.add_trace(sma_20_trace)
-# fig.add_trace(ema_10_trace)
-# fig.add_trace(ema_20_trace)
-# fig.add_trace(rsi_7_trace)
-# fig.add_trace(rsi_9_trace)
-# fig.add_trace(rsi_14_trace)
+fig.add_trace(sma_10_trace)
+fig.add_trace(sma_20_trace)
+fig.add_trace(ema_10_trace)
+fig.add_trace(ema_20_trace)
+fig.add_trace(rsi_7_trace)
+fig.add_trace(rsi_9_trace)
+fig.add_trace(rsi_14_trace)
 
 # # Define button label and default visibility
 # button_label = 'Show all Technical analysis indicators'
