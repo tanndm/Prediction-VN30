@@ -184,7 +184,7 @@ with col12:
 ########################################################################
 option = st.selectbox(
     '**How would you like to be input data?**',
-    ('Manual Input', 'Upload a file'))
+    ('Automatic','Manual Input', 'Upload a file'))
 
 if option == 'Manual Input':
 #   url = "https://finance.vietstock.vn/phan-tich-ky-thuat.htm#"
@@ -262,25 +262,14 @@ if option == 'Manual Input':
       with st.spinner('Wait for it...'):
         time.sleep(3)
       pred_out(pred)
-#       st.info(pred)
-
-else:
+elif option == 'Upload a file':
   uploaded_files = st.file_uploader("Choose a CSV file", accept_multiple_files=True)
   for uploaded_file in uploaded_files:
     bytes_data = uploaded_file.read()
     st.write("filename:", uploaded_file.name)
-  
-st.title("Train model")
+else:
+    pass
 
-
-        
-
-
-col1_1, col2_1, = st.columns(2)
-with col1_1:
-  st.metric(label="VN30-Index", value= "14-04-2023")
-with col2_1:
-  st.metric(label="Trend Prediction", value="80%")
 
 
 
