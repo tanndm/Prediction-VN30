@@ -268,10 +268,12 @@ if option == 'Manual Input':
     pred = scaler.predict(np.array(features,ndmin=2))
     
     submitted = st.form_submit_button("Submit data") 
+    check = False
     if submitted:     
       if (RSI_14d_lag != 0.00 and bid_quality != 0.00 and bid_volume != 0.00 and ask_quality != 0.00 and ask_volume != 0.00 
           and matching_volume != 0.00 and SMA_10_lag != 0.00 and SMA_20_lag != 0.00 and EMA_10_lag != 0.00 and EMA_20_lag != 0.00
           and RSI_7d_lag != 0.00 and RSI_9d_lag != 0.00 and RSI_14d_lag != 0.00):
+        check = True
         with st.spinner('Wait for it...'):
           time.sleep(3)
         st.success('This is a success updating!', icon="✅")
@@ -282,7 +284,7 @@ if option == 'Manual Input':
         st.warning('You do not input enough neccessary features', icon="⚠️")
     
     submitted_2 = st.form_submit_button("Get result") 
-    if submitted_2:     
+    if submitted_2 and check:     
       with st.spinner('Wait for it...'):
         time.sleep(3)
       pred_out(pred)
