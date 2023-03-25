@@ -60,7 +60,7 @@ fig.add_trace(rsi_14_trace)
 
 
 # Define button label and default visibility
-button_label = 'hide Technical analysis indicators'
+button_label = 'Show all Technical analysis indicators'
 visible = True
 
 # Add button to Streamlit app
@@ -75,15 +75,15 @@ if st.button(button_label):
         rsi_9_trace.visible = True
         rsi_14_trace.visible = True
         button_label = 'Show Technical analysis indicators'
-    else:
-        sma_10_trace.visible = False
-        sma_20_trace.visible = False
-        ema_10_trace.visible = False
-        ema_20_trace.visible = False
-        rsi_7_trace.visible = False
-        rsi_9_trace.visible = False
-        rsi_14_trace.visible = False
-        button_label = 'Hide Technical analysis indicators'
+#     else:
+#         sma_10_trace.visible = False
+#         sma_20_trace.visible = False
+#         ema_10_trace.visible = False
+#         ema_20_trace.visible = False
+#         rsi_7_trace.visible = False
+#         rsi_9_trace.visible = False
+#         rsi_14_trace.visible = False
+#         button_label = 'Hide Technical analysis indicators'
         
     # Update figure layout to adjust trace visibility
     fig.update_layout(showlegend=True)
