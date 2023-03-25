@@ -293,10 +293,11 @@ if option == 'Manual Input':
 #       st.warning('You do not input enough neccessary features', icon="⚠️")
       if check_data:
         submitted_2 = st.form_submit_button("Get result") 
-        if submitted_2:     
-          with st.spinner('Wait for it...'):
-            time.sleep(3)
-          pred_out(pred)
+        if submitted_2:
+            pred_out(pred)
+#           with st.spinner('Wait for it...'):
+#             time.sleep(3)
+#           pred_out(pred)
 #         else:
 #           st.warning('You do not input enough neccessary features', icon="⚠️")
     
