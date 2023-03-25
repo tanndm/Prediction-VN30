@@ -41,8 +41,6 @@ fig.update_layout(
     title_text="VN30-Index Candlestick chart from 2017 to 2023",
 )
 
-fig.update_layout(xaxis_rangeslider_visible=False)
-
 sma_10_trace = go.Scatter(x=df['Date'], y=df['sma_10'], name='SMA-10')
 ema_10_trace = go.Scatter(x=df['Date'], y=df['ema_10'], name='EMA-10')
 rsi_7_trace = go.Scatter(x=df['Date'], y=df['rsi_7'], name='RSI-7')
@@ -83,8 +81,10 @@ fig.update_layout(
     yaxis_title="Price"
 )
 
-st.plotly_chart(fig, theme="streamlit")
-# , use_container_width=True
+# fig.update_layout(xaxis_rangeslider_visible=False)
+
+st.plotly_chart(fig, theme="streamlit", use_container_width=True)
+
 
 
 fig2 = go.Figure(data=[go.Table(header=dict(
