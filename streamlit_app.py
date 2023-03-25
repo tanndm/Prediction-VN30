@@ -26,8 +26,17 @@ def pred_out(num):
 
 st.title('Application :blue[Deep Learning] and :red[Machine Learning] in predicting VN30-index price movement using financial news and technical analysis')
 
+###############################################################################################
 import plotly.graph_objects as go
 df = pd.read_csv('vn30-his-2.csv')
+
+time_periods = {
+    '1 week': pd.date_range(end=df['Date'].iloc[-1], periods=5, freq=pd.tseries.offsets.BDay()),
+    '1 month': pd.date_range(end=df['Date'].iloc[-1], periods=20, freq=pd.tseries.offsets.BDay()),
+    '6 months': pd.date_range(end=df['Date'].iloc[-1], periods=120, freq=pd.tseries.offsets.BDay()),
+    '1 year': pd.date_range(end=df['Date'].iloc[-1], periods=252, freq=pd.tseries.offsets.BDay()),
+    '5 years': pd.date_range(end=df['Date'].iloc[-1], periods=1260, freq=pd.tseries.offsets.BDay())
+}
 
 fig = go.Figure(data=[go.Candlestick(x=df['Date'],
                 open=df['Open'],
@@ -36,7 +45,7 @@ fig = go.Figure(data=[go.Candlestick(x=df['Date'],
                 close=df['Close'])])
 
 fig.update_layout(
-    height=700,
+    height=800,
     showlegend=False,
     title_text="VN30-Index Candlestick chart from 2017 to 2023",
 )
@@ -49,7 +58,6 @@ rsi_7_trace = go.Scatter(x=df['Date'], y=df['rsi_7'], name='RSI-7', visible=True
 rsi_9_trace = go.Scatter(x=df['Date'], y=df['rsi_9'], name='RSI-9', visible=True)
 rsi_14_trace = go.Scatter(x=df['Date'], y=df['rsi_14'], name='RSI-14', visible=True)
 
-
 fig.add_trace(sma_10_trace)
 fig.add_trace(sma_20_trace)
 fig.add_trace(ema_10_trace)
@@ -57,7 +65,6 @@ fig.add_trace(ema_20_trace)
 fig.add_trace(rsi_7_trace)
 fig.add_trace(rsi_9_trace)
 fig.add_trace(rsi_14_trace)
-
 
 # Define button label and default visibility
 button_label = 'Show all Technical analysis indicators'
@@ -75,19 +82,8 @@ if st.button(button_label):
         rsi_9_trace.visible = True
         rsi_14_trace.visible = True
         button_label = 'Show Technical analysis indicators'
-#     else:
-#         sma_10_trace.visible = False
-#         sma_20_trace.visible = False
-#         ema_10_trace.visible = False
-#         ema_20_trace.visible = False
-#         rsi_7_trace.visible = False
-#         rsi_9_trace.visible = False
-#         rsi_14_trace.visible = False
-#         button_label = 'Hide Technical analysis indicators'
-        
     # Update figure layout to adjust trace visibility
     fig.update_layout(showlegend=True)
-#     fig.update_traces(visible='legendonly')
 
 # Update figure layout to adjust legend and axis labels
 fig.update_layout(
@@ -105,8 +101,6 @@ fig.update_layout(
 fig.update_layout(xaxis_rangeslider_visible=False)
 
 st.plotly_chart(fig, theme="streamlit", use_container_width=True)
-
-
 #########################################################################################
 fig2 = go.Figure(data=[go.Table(header=dict(
               values=["Date", "Close", "Open",
@@ -127,6 +121,7 @@ click_data = st.checkbox('Click here to show out all of historical data of VN30-
 if click_data:
   st.plotly_chart(fig2, theme="streamlit", use_container_width=True)
 
+##############################################################################################
 st.header("Report model")
 col00, col2, col3, col4, col5 = st.columns(5)
 with col00:
@@ -160,19 +155,17 @@ with col11:
 with col12:
   st.metric(label="Support", value="303")  
   
-
+########################################################################
 option = st.selectbox(
     '**How would you like to be input data?**',
     ('Manual Input', 'Upload a file'))
 
 if option == 'Manual Input':
-  url = "https://finance.vietstock.vn/phan-tich-ky-thuat.htm#"
-  if st.button('Click here to have exactly data of technical analysis ratio'):
-    st.write(f"Finance.Vietstock analysis link: {url}")
-
+#   url = "https://finance.vietstock.vn/phan-tich-ky-thuat.htm#"
+#   if st.button('Click here to have exactly data of technical analysis ratio'):
+#     st.write(f"Finance.Vietstock analysis link: {url}")
   with st.form("my_form"):
-    st.title("Historical data")
-    
+    st.title("Historical data") 
     # historical data
     his1, his2, his3 = st.columns(3)
     with his1:
