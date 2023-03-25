@@ -33,11 +33,14 @@ df['Date'] = pd.to_datetime(df['Date'])
 df = df.set_index('Date')
 
 time_periods = {
-    '1 week': pd.date_range(end=df.index[-1], periods=5, freq=pd.tseries.offsets.BDay()),
-    '1 month': pd.date_range(end=df.index[-1], periods=20, freq=pd.tseries.offsets.BDay()),
-    '6 months': pd.date_range(end=df.index[-1], periods=120, freq=pd.tseries.offsets.BDay()),
+    '5 years': pd.date_range(end=df.index[-1], periods=1260, freq=pd.tseries.offsets.BDay()),
     '1 year': pd.date_range(end=df.index[-1], periods=252, freq=pd.tseries.offsets.BDay()),
-    '5 years': pd.date_range(end=df.index[-1], periods=1260, freq=pd.tseries.offsets.BDay())
+    '6 months': pd.date_range(end=df.index[-1], periods=120, freq=pd.tseries.offsets.BDay()),
+    '3 month': pd.date_range(end=df.index[-1], periods=60, freq=pd.tseries.offsets.BDay()),
+    '1 month': pd.date_range(end=df.index[-1], periods=20, freq=pd.tseries.offsets.BDay()),
+    '2 week': pd.date_range(end=df.index[-1], periods=10, freq=pd.tseries.offsets.BDay()),
+    '1 week': pd.date_range(end=df.index[-1], periods=5, freq=pd.tseries.offsets.BDay()),
+
 }
 
 fig = go.Figure(data=[go.Candlestick(x=df.index,
@@ -60,7 +63,6 @@ dropdown_options = list(time_periods.keys())
 # Add dropdown menu to Streamlit app
 time_period = st.selectbox(dropdown_label, dropdown_options)
 
-st.write(time_periods[time_period][0])
 # Filter data for selected time period
 start_date = time_periods[time_period][0]
 df_filtered = df.loc[start_date:]
