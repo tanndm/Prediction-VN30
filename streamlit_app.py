@@ -279,17 +279,26 @@ if option == 'Manual Input':
         st.success('This is a success updating!', icon="✅")
         st.dataframe(res_df)
       else:
+        check_data = False
         with st.spinner('Wait for it...'):
           time.sleep(1)
         st.warning('You do not input enough neccessary features', icon="⚠️")
     
-    submitted_2 = st.form_submit_button("Get result") 
-    if submitted_2 and check:     
-      with st.spinner('Wait for it...'):
-        time.sleep(3)
-      pred_out(pred)
-    else:
-      st.warning('You do not input enough neccessary features', icon="⚠️")
+#     submitted_2 = st.form_submit_button("Get result") 
+#     if submitted_2:     
+#       with st.spinner('Wait for it...'):
+#         time.sleep(3)
+#       pred_out(pred)
+#     else:
+#       st.warning('You do not input enough neccessary features', icon="⚠️")
+      if check_data:
+        submitted_2 = st.form_submit_button("Get result") 
+        if submitted_2:     
+          with st.spinner('Wait for it...'):
+            time.sleep(3)
+          pred_out(pred)
+        else:
+          st.warning('You do not input enough neccessary features', icon="⚠️")
     
 elif option == 'Upload a file':
   uploaded_files = st.file_uploader("Choose a CSV file", accept_multiple_files=True)
