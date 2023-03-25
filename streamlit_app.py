@@ -41,9 +41,9 @@ fig.update_layout(
     title_text="VN30-Index Candlestick chart from 2017 to 2023",
 )
 
-sma_10_trace = go.Scatter(x=df['Date'], y=df['sma_10'], name='SMA-10')
-ema_10_trace = go.Scatter(x=df['Date'], y=df['ema_10'], name='EMA-10')
-rsi_7_trace = go.Scatter(x=df['Date'], y=df['rsi_7'], name='RSI-7')
+sma_10_trace = go.Scatter(x=df['Date'], y=df['sma_10'], name='SMA-10', visible=True)
+ema_10_trace = go.Scatter(x=df['Date'], y=df['ema_10'], name='EMA-10', visible=True)
+rsi_7_trace = go.Scatter(x=df['Date'], y=df['rsi_7'], name='RSI-7', visible=True)
 
 
 fig.add_trace(sma_10_trace)
@@ -67,6 +67,10 @@ if st.button(button_label):
         ema_10_trace.visible = False
         rsi_7_trace.visible = False
         button_label = 'Show SMA, EMA, RSI'
+        
+    # Update figure layout to adjust trace visibility
+    fig.update_layout(showlegend=True)
+    fig.update_traces(visible='legendonly')
 
 # Update figure layout to adjust legend and axis labels
 fig.update_layout(
@@ -80,8 +84,7 @@ fig.update_layout(
     xaxis_title="Date",
     yaxis_title="Price"
 )
-
-# fig.update_layout(xaxis_rangeslider_visible=False)
+fig.update_layout(xaxis_rangeslider_visible=False)
 
 st.plotly_chart(fig, theme="streamlit", use_container_width=True)
 
