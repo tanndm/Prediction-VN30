@@ -86,7 +86,8 @@ fig.add_trace(rsi_7_trace)
 # )
 
 fig.update_layout(xaxis_rangeslider_visible=False)
-
+fig.update_layout(showlegend=True)
+fig.update_traces(visible='legendonly')
 st.plotly_chart(fig, theme="streamlit", use_container_width=True)
 
 
