@@ -41,75 +41,53 @@ fig.update_layout(
     title_text="VN30-Index Candlestick chart from 2017 to 2023",
 )
 
-# sma_10_trace = go.Scatter(x=df['Date'], y=df['sma_10'], name='SMA-10', visible=True)
-# ema_10_trace = go.Scatter(x=df['Date'], y=df['ema_10'], name='EMA-10', visible=True)
-# rsi_7_trace = go.Scatter(x=df['Date'], y=df['rsi_7'], name='RSI-7', visible=True)
+sma_10_trace = go.Scatter(x=df['Date'], y=df['sma_10'], name='SMA-10', visible=True)
+sma_20_trace = go.Scatter(x=df['Date'], y=df['sma_20'], name='SMA-20', visible=True)
+ema_10_trace = go.Scatter(x=df['Date'], y=df['ema_10'], name='EMA-10', visible=True)
+ema_20_trace = go.Scatter(x=df['Date'], y=df['ema_20'], name='EMA-20', visible=True)
+rsi_7_trace = go.Scatter(x=df['Date'], y=df['rsi_7'], name='RSI-7', visible=True)
+rsi_9_trace = go.Scatter(x=df['Date'], y=df['rsi_9'], name='RSI-9', visible=True)
+rsi_14_trace = go.Scatter(x=df['Date'], y=df['rsi_14'], name='RSI-14', visible=True)
 
 
-# fig.add_trace(sma_10_trace)
-# fig.add_trace(ema_10_trace)
-# fig.add_trace(rsi_7_trace)
+fig.add_trace(sma_10_trace)
+fig.add_trace(sma_20_trace)
+fig.add_trace(ema_10_trace)
+fig.add_trace(ema_20_trace)
+fig.add_trace(rsi_7_trace)
+fig.add_trace(rsi_9_trace)
+fig.add_trace(rsi_14_trace)
 
-# # Define button label and default visibility
-# button_label = 'Technical analysis indicators'
-# visible = True
-
-# # Add button to Streamlit app
-# if st.button(button_label):
-#     visible = not visible
-#     if visible:
-#         sma_10_trace.visible = True
-#         ema_10_trace.visible = True
-#         rsi_7_trace.visible = True
-#         button_label = 'Hide Technical analysis indicators'
-#     else:
-#         sma_10_trace.visible = False
-#         ema_10_trace.visible = False
-#         rsi_7_trace.visible = False
-#         button_label = 'Show Technical analysis indicators'
-        
-#     # Update figure layout to adjust trace visibility
-#     fig.update_layout(showlegend=True)
-# #     fig.update_traces(visible='legendonly')
-
-# # Update figure layout to adjust legend and axis labels
-# fig.update_layout(
-#     legend=dict(
-#         orientation="h",
-#         yanchor="bottom",
-#         y=1.02,
-#         xanchor="right",
-#         x=1
-#     ),
-#     xaxis_title="Date",
-#     yaxis_title="Price"
-# )
-# sma_10_trace = go.Scatter(x=df['Date'], y=df['sma_10'], name='SMA-10', visible=True)
-# ema_10_trace = go.Scatter(x=df['Date'], y=df['ema_10'], name='EMA-10', visible=True)
-# rsi_7_trace = go.Scatter(x=df['Date'], y=df['rsi_7'], name='RSI-7', visible=True)
-
-# Add SMA, EMA, and RSI traces to figure
-fig.add_trace(go.Scatter(x=df['Date'], y=df['sma_10'], name='SMA-10'))
-fig.add_trace(go.Scatter(x=df['Date'], y=df['ema_10'], name='EMA-10'))
-fig.add_trace(go.Scatter(go.Scatter(x=df['Date'], y=df['rsi_7'], name='RSI-7'))
 
 # Define button label and default visibility
-
-button_label = 'SMA, EMA, RSI'
+button_label = 'hide Technical analysis indicators'
 visible = True
 
 # Add button to Streamlit app
 if st.button(button_label):
     visible = not visible
     if visible:
-        fig.for_each_trace(lambda trace: trace.update(visible=True) if trace.name in ['SMA-10', 'EMA-10', 'RSI-7'] else ())
-        button_label = 'Hide SMA, EMA, RSI'
+        sma_10_trace.visible = True
+        sma_20_trace.visible = True
+        ema_10_trace.visible = True
+        ema_20_trace.visible = True
+        rsi_7_trace.visible = True
+        rsi_9_trace.visible = True
+        rsi_14_trace.visible = True
+        button_label = 'Show Technical analysis indicators'
     else:
-        fig.for_each_trace(lambda trace: trace.update(visible=False) if trace.name in ['SMA-10', 'EMA-10', 'RSI-7'] else ())
-        button_label = 'Show SMA, EMA, RSI'
-              
-              
+        sma_10_trace.visible = False
+        sma_20_trace.visible = False
+        ema_10_trace.visible = False
+        ema_20_trace.visible = False
+        rsi_7_trace.visible = False
+        rsi_9_trace.visible = False
+        rsi_14_trace.visible = False
+        button_label = 'Hide Technical analysis indicators'
+        
+    # Update figure layout to adjust trace visibility
     fig.update_layout(showlegend=True)
+#     fig.update_traces(visible='legendonly')
 
 # Update figure layout to adjust legend and axis labels
 fig.update_layout(
@@ -123,7 +101,6 @@ fig.update_layout(
     xaxis_title="Date",
     yaxis_title="Price"
 )
-
 
 fig.update_layout(xaxis_rangeslider_visible=False)
 
