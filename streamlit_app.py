@@ -51,7 +51,7 @@ fig = go.Figure(data=[go.Candlestick(x=df.index,
 
 fig.update_layout(
     height=800,
-    showlegend=False,
+    showlegend=True,
     title_text="VN30-Index Candlestick chart from 2017 to 2023",
 )
 
