@@ -50,40 +50,41 @@ fig.add_trace(sma_10_trace)
 fig.add_trace(ema_10_trace)
 fig.add_trace(rsi_7_trace)
 
-# Define button label and default visibility
-button_label = 'Hide SMA, EMA, RSI'
-visible = True
+# # Define button label and default visibility
+# button_label = 'Hide SMA, EMA, RSI'
+# visible = True
 
-# Add button to Streamlit app
-if st.button(button_label):
-    visible = not visible
-    if visible:
-        sma_10_trace.visible = True
-        ema_10_trace.visible = True
-        rsi_7_trace.visible = True
-        button_label = 'Hide SMA, EMA, RSI'
-    else:
-        sma_10_trace.visible = False
-        ema_10_trace.visible = False
-        rsi_7_trace.visible = False
-        button_label = 'Show SMA, EMA, RSI'
+# # Add button to Streamlit app
+# if st.button(button_label):
+#     visible = not visible
+#     if visible:
+#         sma_10_trace.visible = True
+#         ema_10_trace.visible = True
+#         rsi_7_trace.visible = True
+#         button_label = 'Hide SMA, EMA, RSI'
+#     else:
+#         sma_10_trace.visible = False
+#         ema_10_trace.visible = False
+#         rsi_7_trace.visible = False
+#         button_label = 'Show SMA, EMA, RSI'
         
-    # Update figure layout to adjust trace visibility
-    fig.update_layout(showlegend=True)
-    fig.update_traces(visible='legendonly')
+#     # Update figure layout to adjust trace visibility
+#     fig.update_layout(showlegend=True)
+#     fig.update_traces(visible='legendonly')
 
-# Update figure layout to adjust legend and axis labels
-fig.update_layout(
-    legend=dict(
-        orientation="h",
-        yanchor="bottom",
-        y=1.02,
-        xanchor="right",
-        x=1
-    ),
-    xaxis_title="Date",
-    yaxis_title="Price"
-)
+# # Update figure layout to adjust legend and axis labels
+# fig.update_layout(
+#     legend=dict(
+#         orientation="h",
+#         yanchor="bottom",
+#         y=1.02,
+#         xanchor="right",
+#         x=1
+#     ),
+#     xaxis_title="Date",
+#     yaxis_title="Price"
+# )
+
 fig.update_layout(xaxis_rangeslider_visible=False)
 
 st.plotly_chart(fig, theme="streamlit", use_container_width=True)
