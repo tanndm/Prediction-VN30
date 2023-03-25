@@ -60,14 +60,14 @@ visible = True
 if st.button(button_label):
     visible = not visible
     if visible:
-        sma_trace.visible = True
-        ema_trace.visible = True
-        rsi_trace.visible = True
+        sma_10_trace.visible = True
+        ema_10_trace.visible = True
+        rsi_7_trace.visible = True
         button_label = 'Hide SMA, EMA, RSI'
     else:
-        sma_trace.visible = False
-        ema_trace.visible = False
-        rsi_trace.visible = False
+        sma_10_trace.visible = False
+        ema_10_trace.visible = False
+        rsi_7_trace.visible = False
         button_label = 'Show SMA, EMA, RSI'
 
 # Update figure layout to adjust legend and axis labels
@@ -84,6 +84,8 @@ fig.update_layout(
 )
 
 st.plotly_chart(fig, theme="streamlit", use_container_width=True)
+
+
 
 fig2 = go.Figure(data=[go.Table(header=dict(
               values=["Date", "Close", "Open",
