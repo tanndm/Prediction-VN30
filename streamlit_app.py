@@ -58,16 +58,16 @@ dropdown_options = list(time_periods.keys())
 # Add dropdown menu to Streamlit app
 time_period = st.selectbox(dropdown_label, dropdown_options)
 
-# Filter data for selected time period
-start_date = time_periods[time_period][0]
-df_filtered = df.loc[start_date:]
+# # Filter data for selected time period
+# start_date = time_periods[time_period][0]
+# df_filtered = df.loc[start_date:]
 
-# Update candlestick chart data
-fig.update_traces(x=df_filtered.index,
-                  open=df_filtered['Open'],
-                  high=df_filtered['High'],
-                  low=df_filtered['Low'],
-                  close=df_filtered['Close'])
+# # Update candlestick chart data
+# fig.update_traces(x=df_filtered.index,
+#                   open=df_filtered['Open'],
+#                   high=df_filtered['High'],
+#                   low=df_filtered['Low'],
+#                   close=df_filtered['Close'])
 
 # ##########################################################################################
 # sma_10_trace = go.Scatter(x=df['Date'], y=df['sma_10'], name='SMA-10', visible=True)
