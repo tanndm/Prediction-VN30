@@ -204,7 +204,7 @@ with col12:
 
 d = st.date_input(
     "When\'s your birthday",
-    datetime.date(datetime.date.today()))
+    datetime.date())
 st.write('Your birthday is:', d)
 ########################################################################
 option = st.selectbox(
