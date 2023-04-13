@@ -234,45 +234,45 @@ if option == 'Manual Input':
     # historical data
     his1, his2, his3 = st.columns(3)
     with his1:
-      bid_quality = st.number_input("Feature 1")
+      bid_quality = st.number_input("Number of buy orders")
     with his2:
-      bid_volume = st.number_input("Feature 2")
+      bid_volume = st.number_input("Buy orders volume")
     with his3:
-      ask_quality = st.number_input("Feature 3")
+      ask_quality = st.number_input("Number of sell orders")
       
     his4, his5, his6 = st.columns(3)
     with his4:
-      ask_volume = st.number_input("Feature 4")
+      ask_volume = st.number_input("Sell orders volume")
     with his5:
-      matching_volume = st.number_input("Feature 5")
+      matching_volume = st.number_input("Order matching volume")
     with his6:
-      negotiable_volume = st.number_input("Feature 6")
+      negotiable_volume = st.number_input("Put-through volume")
     
     st.title("Financial news")
     dum1, dum2, ta1 = st.columns(3)
     with dum1:
-      positive = st.number_input("Feature 7", value=1)
+      positive = st.number_input("Positive news", value=1)
     with dum2:
-      negative = st.number_input("Feature 8", value=0)
+      negative = st.number_input("Negative news", value=0)
     with ta1:
-      SMA_10_lag = st.number_input("Feature 9")  
+      SMA_10_lag = st.number_input("SMA 10 days")  
       
     st.title("Technical analysis")
     ta2, ta3, ta4 = st.columns(3)
     with ta2:
-      SMA_20_lag = st.number_input("Feature 10")
+      SMA_20_lag = st.number_input("SMA 20 days")
     with ta3:
-      EMA_10_lag = st.number_input("Feature 11")
+      EMA_10_lag = st.number_input("EMA 10 days")
     with ta4:
-      EMA_20_lag = st.number_input("Feature 12")
+      EMA_20_lag = st.number_input("EMA 20 days")
       
     ta5, ta6, ta7 = st.columns(3)
     with ta5:
-      RSI_7d_lag = st.number_input("Feature 13")
+      RSI_7d_lag = st.number_input("RSI 7 days")
     with ta6:
-      RSI_9d_lag = st.number_input("Feature 14")
+      RSI_9d_lag = st.number_input("RSI 9 days")
     with ta7:
-      RSI_14d_lag = st.number_input("Feature 15")
+      RSI_14d_lag = st.number_input("RSI 14 days")
     # Prediction
     features= [bid_quality, bid_volume, ask_quality, ask_volume, matching_volume, matching_volume,
                positive, negative, SMA_10_lag, SMA_20_lag, EMA_10_lag, EMA_20_lag, RSI_7d_lag, RSI_9d_lag, RSI_14d_lag]
@@ -312,6 +312,13 @@ if option == 'Manual Input':
 
     
 elif option == 'Upload a file':
+  sample_df = pd.DataFrame({'bid_quality':bid_quality, 'bid_volume':bid_volume, 'ask_quality':ask_quality, 'ask_volume':ask_volume,
+                           'matching_volume':matching_volume, 'negotiable_volume':negotiable_volume, 'Positive':positive, 'Negative':negative,
+                           'SMA_10':SMA_10_lag, 'SMA_20':SMA_20_lag, 'EMA_10':EMA_10_lag, 'EMA_20':EMA_20_lag, 'RSI_7d':RSI_7d_lag, 
+                           'RSI_9d':RSI_9d_lag, 'RSI_14d':RSI_14d_lag},index=["dd-MM-YY"])
+  st.write("Please upload data like the sample:")
+  st.dataframe(sample_df)
+
   uploaded_files = st.file_uploader("Choose a CSV file", accept_multiple_files=True)
   for uploaded_file in uploaded_files:
     bytes_data = uploaded_file.read()
