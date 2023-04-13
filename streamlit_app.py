@@ -201,7 +201,11 @@ with col11:
   st.metric(label="F1-score", value="71%")
 with col12:
   st.metric(label="Support", value="303")  
-  
+
+d = st.date_input(
+    "When\'s your birthday",
+    datetime.date(datetime.date.today()))
+st.write('Your birthday is:', d)
 ########################################################################
 option = st.selectbox(
     '**How would you like to be input data?**',
