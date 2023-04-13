@@ -204,10 +204,21 @@ with col12:
 
 import datetime
 
-d = st.date_input(
-    "When\'s your birthday",
+# d = st.date_input(
+#     "When\'s your birthday",
+#     datetime.date(2019, 7, 6))
+# st.write('Your birthday is:', d)
+
+st.header("Report model")
+cold1, cold2 = st.columns(2)
+with cold1:
+  d = st.date_input(
+    "Start: ",
     datetime.date(2019, 7, 6))
-st.write('Your birthday is:', d)
+with cold2:
+  d2 = st.date_input(
+    "End: ",
+    datetime.date(2023, 4, 4))
 
 ########################################################################
 option = st.selectbox(
