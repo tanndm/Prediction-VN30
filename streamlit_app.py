@@ -314,7 +314,7 @@ if option == 'Manual Input':
 elif option == 'Upload a file':
   sample_df = pd.DataFrame({'Number of buy orders': 66774, 'Buy-orders volume':196533544, 'Number of sell orders':58645, 'Sell-orders volume':199406752,
                            'Order matching volume':-2872869, 'Put-through volume':107108336, 'Positive':1, 'Negative':0,
-                           'SMA_10':1020, 'SMA_20':1019:, 'EMA_10':1020, 'EMA_20':1019, 'RSI_7d':56, 
+                           'SMA_10':1020, 'SMA_20':1019, 'EMA_10':1020, 'EMA_20':1019, 'RSI_7d':56, 
                            'RSI_9d':55, 'RSI_14d':54},index=["dd-MM-YY"])
   st.write("Please upload data like the sample:")
   st.dataframe(sample_df)
