@@ -202,10 +202,13 @@ with col11:
 with col12:
   st.metric(label="Support", value="303")  
 
+import datetime
+
 d = st.date_input(
     "When\'s your birthday",
-    datetime.date())
+    datetime.date(2019, 7, 6))
 st.write('Your birthday is:', d)
+
 ########################################################################
 option = st.selectbox(
     '**How would you like to be input data?**',
