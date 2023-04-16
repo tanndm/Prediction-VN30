@@ -388,7 +388,7 @@ elif select_event == 'Upload file':
     bytes_data = uploaded_file.read()
     st.write("filename:", uploaded_file.name)
 else:
-    b = st.sidebar.slider('A frequency range (Hz)', min_value=10, max_value=maxband, value=(30,400))
-    a = st.sidebar.slider('B frequency range (Hz)', min_value=10, max_value=maxband, value=(30,400))
+    b = st.sidebar.slider('A frequency range (Hz)', min_value=10, max_value=1000, value=(30,400))
+    a = st.sidebar.slider('B frequency range (Hz)', min_value=10, max_value=1000, value=(30,400))
 
 
