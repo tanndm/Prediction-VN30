@@ -300,7 +300,7 @@ with cold2:
 
 
 select_event = st.sidebar.selectbox('Methods',
-                                    ['Manual input', 'Upload file'])
+                                    ['Manual input', 'Upload file',"Test"])
 
 if select_event == 'Manual input':
   with st.form("my_form"):
@@ -375,7 +375,7 @@ if select_event == 'Manual input':
         with st.spinner('Wait for it...'):
           time.sleep(1)
         st.warning('You do not input enough neccessary features', icon="⚠️")
-else:
+elif select_event == 'Upload file':
   sample_df = pd.DataFrame({'Number of buy orders': 66774, 'Buy-orders volume':196533544, 'Number of sell orders':58645, 'Sell-orders volume':199406752,
                            'Order matching volume':-2872869, 'Put-through volume':107108336, 'Positive':1, 'Negative':0,
                            'SMA_10':1020, 'SMA_20':1019, 'EMA_10':1020, 'EMA_20':1019, 'RSI_7d':56, 
@@ -387,5 +387,8 @@ else:
   for uploaded_file in uploaded_files:
     bytes_data = uploaded_file.read()
     st.write("filename:", uploaded_file.name)
+else:
+    b = st.sidebar.slider('A frequency range (Hz)', min_value=10, max_value=maxband, value=(30,400))
+    a = st.sidebar.slider('B frequency range (Hz)', min_value=10, max_value=maxband, value=(30,400))
 
 
