@@ -303,58 +303,26 @@ select_event = st.sidebar.selectbox('Methods',
                                     ['Manual input', 'Upload file',"Test"])
 
 if select_event == 'Manual input':
-  with st.form("my_form"):
-    st.title("Historical data") 
-    # historical data
-    his1, his2, his3 = st.columns(3)
-    with his1:
-      bid_quality = st.number_input("Number of buy orders")
-    with his2:
-      bid_volume = st.number_input("Buy orders volume")
-    with his3:
-      ask_quality = st.number_input("Number of sell orders")
-      
-    his4, his5, his6 = st.columns(3)
-    with his4:
-      ask_volume = st.number_input("Sell orders volume")
-    with his5:
-      matching_volume = st.number_input("Order matching volume")
-    with his6:
-      negotiable_volume = st.number_input("Put-through volume")
-    
-    st.title("Financial news")
-    dum1, dum2, ta1 = st.columns(3)
-    with dum1:
-      positive = st.number_input("Positive news", value=1)
-    with dum2:
-      negative = st.number_input("Negative news", value=0)
-    with ta1:
-      SMA_10_lag = st.number_input("SMA 10 days")  
-      
-    st.title("Technical analysis")
-    ta2, ta3, ta4 = st.columns(3)
-    with ta2:
-      SMA_20_lag = st.number_input("SMA 20 days")
-    with ta3:
-      EMA_10_lag = st.number_input("EMA 10 days")
-    with ta4:
-      EMA_20_lag = st.number_input("EMA 20 days")
-      
-    ta5, ta6, ta7 = st.columns(3)
-    with ta5:
-      RSI_7d_lag = st.number_input("RSI 7 days")
-    with ta6:
-      RSI_9d_lag = st.number_input("RSI 9 days")
-    with ta7:
-      RSI_14d_lag = st.number_input("RSI 14 days")
-    # Prediction
-    features= [bid_quality, bid_volume, ask_quality, ask_volume, matching_volume, matching_volume,
-               positive, negative, SMA_10_lag, SMA_20_lag, EMA_10_lag, EMA_20_lag, RSI_7d_lag, RSI_9d_lag, RSI_14d_lag]
+    bid_quality = st.sidebar.slider('bid_quality', min_value=10, max_value=1000, value=(30,400))
+    bid_volume = st.sidebar.slider('bid_volume', min_value=10, max_value=1000, value=(30,400))
+    ask_quality = st.sidebar.slider('ask_quality', min_value=10, max_value=1000, value=(30,400))
+    ask_volume = st.sidebar.slider('ask_volume', min_value=10, max_value=1000, value=(30,400))
+    matching_volume = st.sidebar.slider('matching_volume', min_value=10, max_value=1000, value=(30,400))
+    negotiable_volume = st.sidebar.slider('negotiable_volume', min_value=10, max_value=1000, value=(30,400))
+    positive = st.sidebar.slider('positive', min_value=0, max_value=1, value=(1))
+    negative = st.sidebar.slider('negative', min_value=0, max_value=1, value=(0))
+    SMA_10_lag = st.sidebar.slider('SMA 10', min_value=10, max_value=1000, value=(30,400))
+    SMA_20_lag = st.sidebar.slider('SMA 20', min_value=10, max_value=1000, value=(30,400))
+    EMA_10_lag = st.sidebar.slider('EMA 10', min_value=10, max_value=1000, value=(30,400))
+    EMA_20_lag = st.sidebar.slider('EMA 20', min_value=10, max_value=1000, value=(30,400))
+    RSI_7d_lag = st.sidebar.slider('RSI 7', min_value=10, max_value=1000, value=(30,400))
+    RSI_9d_lag = st.sidebar.slider('RSI 9', min_value=10, max_value=1000, value=(30,400))
+    RSI_14d_lag = st.sidebar.slider('RSI 14', min_value=10, max_value=1000, value=(30,400))
     
     res_df = pd.DataFrame({'bid_quality':bid_quality, 'bid_volume':bid_volume, 'ask_quality':ask_quality, 'ask_volume':ask_volume,
                            'matching_volume':matching_volume, 'negotiable_volume':negotiable_volume, 'Positive':positive, 'Negative':negative,
                            'SMA_10':SMA_10_lag, 'SMA_20':SMA_20_lag, 'EMA_10':EMA_10_lag, 'EMA_20':EMA_20_lag, 'RSI_7d':RSI_7d_lag, 
-                           'RSI_9d':RSI_9d_lag, 'RSI_14d':RSI_14d_lag},index=["05-01-2023"])
+                           'RSI_9d':RSI_9d_lag, 'RSI_14d':RSI_14d_lag},index=["dd-MM-YYYY"])
     
     pred = scaler.predict(np.array(features,ndmin=2))
     
@@ -387,20 +355,20 @@ elif select_event == 'Upload file':
   for uploaded_file in uploaded_files:
     bytes_data = uploaded_file.read()
     st.write("filename:", uploaded_file.name)
-else:
-    bid_quality = st.sidebar.slider('bid_quality', min_value=10, max_value=1000, value=(30,400))
-    bid_volume = st.sidebar.slider('bid_volume', min_value=10, max_value=1000, value=(30,400))
-    ask_quality = st.sidebar.slider('ask_quality', min_value=10, max_value=1000, value=(30,400))
-    ask_volume = st.sidebar.slider('ask_volume', min_value=10, max_value=1000, value=(30,400))
-    matching_volume = st.sidebar.slider('matching_volume', min_value=10, max_value=1000, value=(30,400))
-    negotiable_volume = st.sidebar.slider('negotiable_volume', min_value=10, max_value=1000, value=(30,400))
-    positive = st.sidebar.slider('positive', min_value=0, max_value=1, value=(1))
-    negative = st.sidebar.slider('negative', min_value=0, max_value=1, value=(0))
-    SMA_10_lag = st.sidebar.slider('SMA 10', min_value=10, max_value=1000, value=(30,400))
-    SMA_20_lag = st.sidebar.slider('SMA 20', min_value=10, max_value=1000, value=(30,400))
-    EMA_10_lag = st.sidebar.slider('EMA 10', min_value=10, max_value=1000, value=(30,400))
-    EMA_20_lag = st.sidebar.slider('EMA 20', min_value=10, max_value=1000, value=(30,400))
-    RSI_7d_lag = st.sidebar.slider('RSI 7', min_value=10, max_value=1000, value=(30,400))
-    RSI_9d_lag = st.sidebar.slider('RSI 9', min_value=10, max_value=1000, value=(30,400))
-    RSI_14d_lag = st.sidebar.slider('RSI 14', min_value=10, max_value=1000, value=(30,400))
+# else:
+#     bid_quality = st.sidebar.slider('bid_quality', min_value=10, max_value=1000, value=(30,400))
+#     bid_volume = st.sidebar.slider('bid_volume', min_value=10, max_value=1000, value=(30,400))
+#     ask_quality = st.sidebar.slider('ask_quality', min_value=10, max_value=1000, value=(30,400))
+#     ask_volume = st.sidebar.slider('ask_volume', min_value=10, max_value=1000, value=(30,400))
+#     matching_volume = st.sidebar.slider('matching_volume', min_value=10, max_value=1000, value=(30,400))
+#     negotiable_volume = st.sidebar.slider('negotiable_volume', min_value=10, max_value=1000, value=(30,400))
+#     positive = st.sidebar.slider('positive', min_value=0, max_value=1, value=(1))
+#     negative = st.sidebar.slider('negative', min_value=0, max_value=1, value=(0))
+#     SMA_10_lag = st.sidebar.slider('SMA 10', min_value=10, max_value=1000, value=(30,400))
+#     SMA_20_lag = st.sidebar.slider('SMA 20', min_value=10, max_value=1000, value=(30,400))
+#     EMA_10_lag = st.sidebar.slider('EMA 10', min_value=10, max_value=1000, value=(30,400))
+#     EMA_20_lag = st.sidebar.slider('EMA 20', min_value=10, max_value=1000, value=(30,400))
+#     RSI_7d_lag = st.sidebar.slider('RSI 7', min_value=10, max_value=1000, value=(30,400))
+#     RSI_9d_lag = st.sidebar.slider('RSI 9', min_value=10, max_value=1000, value=(30,400))
+#     RSI_14d_lag = st.sidebar.slider('RSI 14', min_value=10, max_value=1000, value=(30,400))
 
