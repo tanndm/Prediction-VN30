@@ -168,6 +168,9 @@ click_data = st.checkbox('Click here to show out all of historical data of VN30-
 if click_data:
   st.plotly_chart(fig2, theme="streamlit", use_container_width=True)
 
+
+select_event = st.sidebar.selectbox('How do you want to find data?',
+                                    ['By event name', 'By GPS'])
 ##############################################################################################
 st.header("Report model")
 col00, col2, col3, col4, col5 = st.columns(5)
