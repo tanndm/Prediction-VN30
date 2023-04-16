@@ -325,6 +325,7 @@ if select_event == 'Manual input':
                            'SMA_10':SMA_10_lag, 'SMA_20':SMA_20_lag, 'EMA_10':EMA_10_lag, 'EMA_20':EMA_20_lag, 'RSI_7d':RSI_7d_lag, 
                            'RSI_9d':RSI_9d_lag, 'RSI_14d':RSI_14d_lag},index=["21-04-2023"])
     
+    st.sidebar.button('Submit data')
     pred = scaler.predict(np.array(features,ndmin=2))
     if st.sidebar.button('Submit data'):
         with st.spinner('Wait for it...'):
