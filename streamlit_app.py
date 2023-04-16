@@ -315,10 +315,9 @@ if select_event == 'Manual input':
     SMA_20_lag = st.sidebar.slider('SMA 20', min_value=10, max_value=1000, value=(30,400))
     EMA_10_lag = st.sidebar.slider('EMA 10', min_value=10, max_value=1000, value=(30,400))
     EMA_20_lag = st.sidebar.slider('EMA 20', min_value=10, max_value=1000, value=(30,400))
-    RSI_7d_lag = st.sidebar.slider('RSI 7', min_value=10, max_value=1000, value=(30,400))
+    RSI_7d_lag = st.number_input("RSI 7 days")
     RSI_9d_lag = st.sidebar.slider('RSI 9', min_value=10, max_value=1000, value=(30,400))
     RSI_14d_lag = st.sidebar.slider('RSI 14', min_value=10, max_value=1000, value=(30,400))
-    
     
     res_df = pd.DataFrame({'bid_quality':bid_quality, 'bid_volume':bid_volume, 'ask_quality':ask_quality, 'ask_volume':ask_volume,
                            'matching_volume':matching_volume, 'negotiable_volume':negotiable_volume, 'Positive':positive, 'Negative':negative,
