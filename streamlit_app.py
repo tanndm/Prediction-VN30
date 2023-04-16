@@ -320,11 +320,23 @@ if select_event == 'Manual input':
     RSI_14d_lag = st.sidebar.slider('RSI 14', min_value=10, max_value=1000, value=(30,400))
     
     
-    st.sidebar.button('Say hello')
     res_df = pd.DataFrame({'bid_quality':bid_quality, 'bid_volume':bid_volume, 'ask_quality':ask_quality, 'ask_volume':ask_volume,
                            'matching_volume':matching_volume, 'negotiable_volume':negotiable_volume, 'Positive':positive, 'Negative':negative,
                            'SMA_10':SMA_10_lag, 'SMA_20':SMA_20_lag, 'EMA_10':EMA_10_lag, 'EMA_20':EMA_20_lag, 'RSI_7d':RSI_7d_lag, 
                            'RSI_9d':RSI_9d_lag, 'RSI_14d':RSI_14d_lag},index=["21-04-2023"])
+    
+    check = st.sidebar.button('Submit data')
+    if check:
+        with st.spinner('Wait for it...'):
+            time.sleep(2)
+            st.success('This is a success updating!', icon="✅")
+            st.dataframe(res_df)
+            pred_out(pred)
+    else:
+        check_data = False
+        with st.spinner('Wait for it...'):
+            time.sleep(1)
+            st.warning('You do not input enough neccessary features', icon="⚠️")
     
 #     pred = scaler.predict(np.array(features,ndmin=2))
     
@@ -348,6 +360,7 @@ if select_event == 'Manual input':
 #         with st.spinner('Wait for it...'):
 #           time.sleep(1)
 #         st.warning('You do not input enough neccessary features', icon="⚠️")
+
 elif select_event == 'Upload file':
   sample_df = pd.DataFrame({'Number of buy orders': 66774, 'Buy-orders volume':196533544, 'Number of sell orders':58645, 'Sell-orders volume':199406752,
                            'Order matching volume':-2872869, 'Put-through volume':107108336, 'Positive':1, 'Negative':0,
