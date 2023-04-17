@@ -193,21 +193,21 @@ select_event = st.sidebar.selectbox('Methods',
                                     ['Manual input', 'Upload file'])
 
 if select_event == 'Manual input':
-    bid_quality = st.sidebar.number_input("bid_quality", value=100000)
-    bid_volume = st.sidebar.number_input("bid_volume", value=100000)
-    ask_quality = st.sidebar.number_input("ask_quality", value=100000)
-    ask_volume = st.sidebar.number_input("ask_volume", value=100000)
-    matching_volume = st.sidebar.number_input("matching_volume", value=100000)
+    bid_quality = st.sidebar.number_input("bid_quality", value=66774)
+    bid_volume = st.sidebar.number_input("bid_volume", value=196533544)
+    ask_quality = st.sidebar.number_input("ask_quality", value=58645)
+    ask_volume = st.sidebar.number_input("ask_volume", value=199406752)
+    matching_volume = st.sidebar.number_input("matching_volume", value=7176062)
     negotiable_volume = st.sidebar.number_input("negotiable_volume", value=100000)
     positive = st.sidebar.number_input("positive", value=1)
     negative = st.sidebar.number_input("negative", value=0)
-    SMA_10_lag = st.sidebar.number_input("SMA 10 days", value=55)
-    SMA_20_lag = st.sidebar.number_input("SMA 20 days", value=55)
-    EMA_10_lag = st.sidebar.number_input("EMA 10 days", value=55)
-    EMA_20_lag = st.sidebar.number_input("EMA 20 days", value=55)
-    RSI_7d_lag = st.sidebar.number_input("RSI 7 days", value=35)
-    RSI_9d_lag = st.sidebar.number_input("RSI 9 days", value=35)
-    RSI_14d_lag = st.sidebar.number_input("RSI 14 days", value=35)
+    SMA_10_lag = st.sidebar.number_input("SMA 10 days", value=630)
+    SMA_20_lag = st.sidebar.number_input("SMA 20 days", value=623)
+    EMA_10_lag = st.sidebar.number_input("EMA 10 days", value=631)
+    EMA_20_lag = st.sidebar.number_input("EMA 20 days", value=626)
+    RSI_7d_lag = st.sidebar.number_input("RSI 7 days", value=79)
+    RSI_9d_lag = st.sidebar.number_input("RSI 9 days", value=71)
+    RSI_14d_lag = st.sidebar.number_input("RSI 14 days", value=61)
     
     res_df = pd.DataFrame({'bid_quality':bid_quality, 'bid_volume':bid_volume, 'ask_quality':ask_quality, 'ask_volume':ask_volume,
                            'matching_volume':matching_volume, 'negotiable_volume':negotiable_volume, 'Positive':positive, 'Negative':negative,
@@ -235,7 +235,7 @@ if select_event == 'Manual input':
         
 elif select_event == 'Upload file':
   sample_df = pd.DataFrame({'Number of buy orders': 66774, 'Buy-orders volume':196533544, 'Number of sell orders':58645, 'Sell-orders volume':199406752,
-                           'Order matching volume':-2872869, 'Put-through volume':107108336, 'Positive':1, 'Negative':0,
+                           'Order matching volume':107108336, 'Put-through volume':7176062, 'Positive':1, 'Negative':0,
                            'SMA_10':1020, 'SMA_20':1019, 'EMA_10':1020, 'EMA_20':1019, 'RSI_7d':56, 
                            'RSI_9d':55, 'RSI_14d':54},index=["dd-MM-YY"])
   if st.sidebar.button('Sample Data'):
