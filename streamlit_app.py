@@ -146,11 +146,11 @@ col00, col2, col3, col4, col5 = st.columns(5)
 with col00:
   st.metric(label="", value="Label 0")
 with col2:
-  st.metric(label="Precison label 0", value="73%")
+  st.metric(label="Precison label 0", value="76%")
 with col3:
-  st.metric(label="Recall label 0", value="62%")
+  st.metric(label="Recall label 0", value="67%")
 with col4:
-  st.metric(label="F1-score", value="67%")
+  st.metric(label="F1-score", value="71%")
 with col5:
   st.metric(label="Support", value="142")
 
@@ -158,19 +158,19 @@ col01, col6, col7, col8, col9 = st.columns(5)
 with col01:
   st.metric(label="", value="Label 1")
 with col6:
-  st.metric(label="Precison label 1", value="70%")
+  st.metric(label="Precison label 1", value="74%")
 with col7:
-  st.metric(label="Recall label 1", value="80%")
+  st.metric(label="Recall label 1", value="81%")
 with col8:
-  st.metric(label="F1-score", value="75%")
+  st.metric(label="F1-score", value="77%")
 with col9:
   st.metric(label="Support", value="161")
 
 col13, col1, col10, col11, col12 = st.columns(5)
 with col10:
-  st.metric(label="Accuracy", value="71%")
+  st.metric(label="Accuracy", value="75%")
 with col11:
-  st.metric(label="F1-score", value="71%")
+  st.metric(label="F1-score", value="75%")
 with col12:
   st.metric(label="Support", value="303")  
 
@@ -181,17 +181,17 @@ import datetime
 #     datetime.date(2019, 7, 6))
 # st.write('Your birthday is:', d)
 
-st.header("Report model")
-cold1, cold2 = st.columns(2)
-with cold1:
-  d = st.date_input(
-    "Start: ",
-    datetime.date(2019, 7, 6))
-with cold2:
-  d2 = st.date_input(
-    "End: ",
-    datetime.date(2023, 4, 4))
 
+# cold1, cold2 = st.columns(2)
+# with cold1:
+#   d = st.date_input(
+#     "Start: ",
+#     datetime.date(2019, 7, 6))
+# with cold2:
+#   d2 = st.date_input(
+#     "End: ",
+#     datetime.date(2023, 4, 4))
+st.header("Forcasting result")
 ########################################################################
 select_event = st.sidebar.selectbox('Methods',
                                     ['Manual input', 'Upload file'])
@@ -221,6 +221,7 @@ if select_event == 'Manual input':
     features= [bid_quality, bid_volume, ask_quality, ask_volume, matching_volume, matching_volume,
                positive, negative, SMA_10_lag, SMA_20_lag, EMA_10_lag, EMA_20_lag, RSI_7d_lag, RSI_9d_lag, RSI_14d_lag]    
     pred = scaler.predict(np.array(features,ndmin=2))
+    pred_prob = scaler.predict_proba(np.array(features,ndmin=2))
     
     if st.sidebar.button('Submit data'):
         with st.spinner('Wait for it...'):
@@ -231,7 +232,7 @@ if select_event == 'Manual input':
     else:
         with st.spinner('Wait for it...'):
             time.sleep(1)
-        st.warning('You do not input enough neccessary features', icon="⚠️")
+        st.warning('You do not input neccessary features', icon="⚠️")
         
 elif select_event == 'Upload file':
   sample_df = pd.DataFrame({'Number of buy orders': 66774, 'Buy-orders volume':196533544, 'Number of sell orders':58645, 'Sell-orders volume':199406752,
