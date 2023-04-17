@@ -132,12 +132,8 @@ fig2.update_layout(
     title_text="VN30-Index data table from 2017 to 2023",
 )
 
-# click_data = st.checkbox('Click here to show out all of historical data of VN30-Index')
-# if click_data:
-#   st.plotly_chart(fig2, theme="streamlit", use_container_width=True)
-
 st.sidebar.markdown('#### VN30-Index data table from 2017 to 2023')
-click_data = st.sidebar.checkbox('Click here to show out all of historical data of VN30-Index', value=True)
+click_data = st.sidebar.checkbox('Click here to show out all of historical data of VN30-Index', value=False)
 if click_data:
   st.plotly_chart(fig2, theme="streamlit", use_container_width=True)
 ##############################################################################################
@@ -230,6 +226,7 @@ if select_event == 'Manual input':
         st.dataframe(res_df)
         pred_out(pred)
         df_prob = pd.DataFrame({'Downtrend':pred_prob[:,0], 'Uptrend':pred_prob[:,1]},index=["21-04-2023"])
+        df_prob.index = df_prob.index.set_names("Probability")
         st.dataframe(df_prob)
     else:
         with st.spinner('Wait for it...'):
