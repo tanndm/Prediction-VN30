@@ -328,10 +328,10 @@ if select_event == 'Manual input':
 #     pred = scaler.predict(np.array(features,ndmin=2))
     
     if st.sidebar.button('Submit data'):
-        with st.sidebar.spinner('Wait for it...'):
+        with st.spinner('Wait for it...'):
             time.sleep(2)
-        st.sidebar.success('This is a success updating!', icon="✅")
-        st.sidebar.dataframe(res_df)
+        st.success('This is a success updating!', icon="✅")
+        st.dataframe(res_df)
 #         pred_out(pred)
     else:
 #         check_data = False
@@ -364,8 +364,10 @@ elif select_event == 'Upload file':
                            'Order matching volume':-2872869, 'Put-through volume':107108336, 'Positive':1, 'Negative':0,
                            'SMA_10':1020, 'SMA_20':1019, 'EMA_10':1020, 'EMA_20':1019, 'RSI_7d':56, 
                            'RSI_9d':55, 'RSI_14d':54},index=["dd-MM-YY"])
-  st.sidebar.write("Please upload data like the sample:")
-  st.sidebar.dataframe(sample_df)
+  if st.sidebar.button('Sample Data'):
+      with st.spinner('Wait for it...'):
+#   st.sidebar.write("Please upload data like the sample:")
+          st.dataframe(sample_df)
 
   uploaded_files = st.sidebar.file_uploader("Choose a CSV file", accept_multiple_files=True)
   for uploaded_file in uploaded_files:
