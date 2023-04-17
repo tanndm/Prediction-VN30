@@ -229,6 +229,7 @@ if select_event == 'Manual input':
         st.success('This is a success updating!', icon="✅")
         st.dataframe(res_df)
         pred_out(pred)
+        st.write(pred_prob)
     else:
         with st.spinner('Wait for it...'):
             time.sleep(1)
