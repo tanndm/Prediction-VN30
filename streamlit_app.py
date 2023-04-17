@@ -365,9 +365,10 @@ elif select_event == 'Upload file':
                            'SMA_10':1020, 'SMA_20':1019, 'EMA_10':1020, 'EMA_20':1019, 'RSI_7d':56, 
                            'RSI_9d':55, 'RSI_14d':54},index=["dd-MM-YY"])
   if st.sidebar.button('Sample Data'):
-      with st.sidebar.spinner('Wait for it...'):
-          st.write("Please upload data like the sample:")
-          st.dataframe(sample_df)
+      with st.spinner('Wait for it...'):
+        time.sleep(2)
+      st.write("Please upload data like the sample:")
+      st.dataframe(sample_df)
 
   uploaded_files = st.sidebar.file_uploader("Choose a CSV file", accept_multiple_files=True)
   for uploaded_file in uploaded_files:
