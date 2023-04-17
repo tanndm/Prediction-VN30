@@ -300,7 +300,7 @@ with cold2:
 
 
 select_event = st.sidebar.selectbox('Methods',
-                                    ['Manual input', 'Upload file',"Test"])
+                                    ['Manual input', 'Upload file'])
 
 if select_event == 'Manual input':
     bid_quality = st.sidebar.number_input("bid_quality", value=100000)
@@ -324,19 +324,20 @@ if select_event == 'Manual input':
                            'SMA_10':SMA_10_lag, 'SMA_20':SMA_20_lag, 'EMA_10':EMA_10_lag, 'EMA_20':EMA_20_lag, 'RSI_7d':RSI_7d_lag, 
                            'RSI_9d':RSI_9d_lag, 'RSI_14d':RSI_14d_lag},index=["21-04-2023"])
     
-    st.sidebar.button('Submit data')
-    pred = scaler.predict(np.array(features,ndmin=2))
+#     st.sidebar.button('Submit data')
+#     pred = scaler.predict(np.array(features,ndmin=2))
+    
     if st.sidebar.button('Submit data'):
-        with st.spinner('Wait for it...'):
+        with st.sidebar.spinner('Wait for it...'):
             time.sleep(2)
-        st.success('This is a success updating!', icon="✅")
-        st.dataframe(res_df)
-        pred_out(pred)
+        st.sidebar.success('This is a success updating!', icon="✅")
+        st.sidebar.dataframe(res_df)
+#         pred_out(pred)
     else:
-        check_data = False
-        with st.spinner('Wait for it...'):
+#         check_data = False
+        with st.sidebar.spinner('Wait for it...'):
             time.sleep(1)
-        st.warning('You do not input enough neccessary features', icon="⚠️")
+        st.sidebar.warning('You do not input enough neccessary features', icon="⚠️")
     
 #     pred = scaler.predict(np.array(features,ndmin=2))
 
@@ -363,27 +364,12 @@ elif select_event == 'Upload file':
                            'Order matching volume':-2872869, 'Put-through volume':107108336, 'Positive':1, 'Negative':0,
                            'SMA_10':1020, 'SMA_20':1019, 'EMA_10':1020, 'EMA_20':1019, 'RSI_7d':56, 
                            'RSI_9d':55, 'RSI_14d':54},index=["dd-MM-YY"])
-  st.write("Please upload data like the sample:")
-  st.dataframe(sample_df)
+  st.sidebar.write("Please upload data like the sample:")
+  st.sidebar.dataframe(sample_df)
 
-  uploaded_files = st.file_uploader("Choose a CSV file", accept_multiple_files=True)
+  uploaded_files = st.sidebar.file_uploader("Choose a CSV file", accept_multiple_files=True)
   for uploaded_file in uploaded_files:
-    bytes_data = uploaded_file.read()
-    st.write("filename:", uploaded_file.name)
-# else:
-#     bid_quality = st.sidebar.slider('bid_quality', min_value=10, max_value=1000, value=(30,400))
-#     bid_volume = st.sidebar.slider('bid_volume', min_value=10, max_value=1000, value=(30,400))
-#     ask_quality = st.sidebar.slider('ask_quality', min_value=10, max_value=1000, value=(30,400))
-#     ask_volume = st.sidebar.slider('ask_volume', min_value=10, max_value=1000, value=(30,400))
-#     matching_volume = st.sidebar.slider('matching_volume', min_value=10, max_value=1000, value=(30,400))
-#     negotiable_volume = st.sidebar.slider('negotiable_volume', min_value=10, max_value=1000, value=(30,400))
-#     positive = st.sidebar.slider('positive', min_value=0, max_value=1, value=(1))
-#     negative = st.sidebar.slider('negative', min_value=0, max_value=1, value=(0))
-#     SMA_10_lag = st.sidebar.slider('SMA 10', min_value=10, max_value=1000, value=(30,400))
-#     SMA_20_lag = st.sidebar.slider('SMA 20', min_value=10, max_value=1000, value=(30,400))
-#     EMA_10_lag = st.sidebar.slider('EMA 10', min_value=10, max_value=1000, value=(30,400))
-#     EMA_20_lag = st.sidebar.slider('EMA 20', min_value=10, max_value=1000, value=(30,400))
-#     RSI_7d_lag = st.sidebar.slider('RSI 7', min_value=10, max_value=1000, value=(30,400))
-#     RSI_9d_lag = st.sidebar.slider('RSI 9', min_value=10, max_value=1000, value=(30,400))
-#     RSI_14d_lag = st.sidebar.slider('RSI 14', min_value=10, max_value=1000, value=(30,400))
+    bytes_data = sidebar.uploaded_file.read()
+    st.sidebar.write("filename:", uploaded_file.name)
+
 
