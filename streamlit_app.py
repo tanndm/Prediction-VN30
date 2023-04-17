@@ -369,7 +369,7 @@ elif select_event == 'Upload file':
 
   uploaded_files = st.sidebar.file_uploader("Choose a CSV file", accept_multiple_files=True)
   for uploaded_file in uploaded_files:
-    bytes_data = sidebar.uploaded_file.read()
+    bytes_data = uploaded_file.read()
     st.sidebar.write("filename:", uploaded_file.name)
 
 
