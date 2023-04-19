@@ -262,7 +262,7 @@ elif select_event == 'Upload file':
                              'Downtrend':pred_new_prob[:,0], 
                              'Uptrend':pred_new_prob[:,1]},index=new_data.index)
 
-    st.dataframe(df_final)
+    st.dataframe(df_final,use_container_width=True)
   else:
     st.warning('You do not input neccessary features', icon="⚠️")
     
