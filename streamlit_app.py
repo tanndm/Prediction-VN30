@@ -269,9 +269,9 @@ elif select_event == 'Upload file':
     
     progress_text = "Operation in progress. Please wait."
     my_bar = st.progress(0, text=progress_text)
-    for percent_complete in range(50):
-        time.sleep(0.1)
-        my_bar.progress(percent_complete + 1, text=progress_text)
+    for percent_complete in range(100):
+        time.sleep(0.02)
+        my_bar.progress(percent_complete + 5, text=progress_text)
 
     st.dataframe(df_final,use_container_width=True)
   else:
