@@ -215,9 +215,8 @@ if select_event == 'Manual input':
     
     input_Data = [res_df.bid_quality, res_df.bid_volume, res_df.ask_quality, res_df.ask_volume, res_df.matching_volume, res_df.matching_volume,
                res_df.Positive, res_df.Negative, res_df.SMA_10, res_df.SMA_20, res_df.EMA_10, res_df.EMA_20, res_df.RSI_7d, res_df.RSI_9d, res_df.RSI_14d]    
-#     pred = scaler.predict(np.array(input_Data,ndmin=2))
-    pred = scaler.predict(res_df)
-    pred_prob = scaler.predict_proba(np.array(input_Data,ndmin=2))
+    pred = scaler.predict(np.array(input_Data,ndmin=1))
+    pred_prob = scaler.predict_proba(np.array(input_Data,ndmin=1))
     
     if st.sidebar.button('Submit data'):
         with st.spinner('Wait for it...'):
