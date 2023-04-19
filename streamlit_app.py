@@ -28,11 +28,11 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 
-# -- Set page config
-apptitle = 'Predict VN30-index price movement using financial news and technical analysis'
-st.set_page_config(page_title=apptitle, 
-                   page_icon="chart_with_upwards_trend",
-                   layout="wide")
+# # -- Set page config
+# apptitle = 'Predict VN30-index price movement using financial news and technical analysis'
+# st.set_page_config(page_title=apptitle, 
+#                    page_icon="chart_with_upwards_trend",
+#                    layout="wide")
 
 # # Unpacking Scaler pkl file
 S_file = open('model_rf.pkl','rb')
