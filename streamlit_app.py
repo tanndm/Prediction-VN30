@@ -254,6 +254,7 @@ elif select_event == 'Upload file':
         time.sleep(2)
       st.write("Please upload data like the sample:")
       st.dataframe(sample_df)
+      st.write(sample_df.columns())
 
   uploaded_files = st.sidebar.file_uploader("Choose a CSV file")
   if uploaded_files is not None:
