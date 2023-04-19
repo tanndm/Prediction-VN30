@@ -271,7 +271,7 @@ elif select_event == 'Upload file':
     my_bar = st.progress(100, text=progress_text)
     for percent_complete in range(100):
         time.sleep(0.1)
-        my_bar.progress(percent_complete + 10, text=progress_text)
+        my_bar.progress(percent_complete + 1, text=progress_text)
 
     st.dataframe(df_final,use_container_width=True)
   else:
