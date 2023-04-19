@@ -216,7 +216,7 @@ if select_event == 'Manual input':
                            'SMA_10':SMA_10_lag, 'SMA_20':SMA_20_lag, 'EMA_10':EMA_10_lag, 'EMA_20':EMA_20_lag, 'RSI_7d':RSI_7d_lag, 
                            'RSI_9d':RSI_9d_lag, 'RSI_14d':RSI_14d_lag},index=["05-05-2023"])
     
-    input_Data = [bid_quality,bid_volume, ask_quality, ask_volume, matching_volume, matching_volume,
+    input_Data = [bid_quality,bid_volume, ask_quality, ask_volume, matching_volume, negotiable_volume,
                positive, negative, SMA_10_lag, SMA_20_lag, EMA_10_lag, EMA_20_lag, RSI_7d_lag, RSI_9d_lag, RSI_14d_lag]    
     
 #     pred = scaler.predict(np.array(input_Data,ndmin=2))
@@ -252,11 +252,16 @@ elif select_event == 'Upload file':
   uploaded_files = st.sidebar.file_uploader("Choose a CSV file")
   if uploaded_files is not None:
     bytes_data = uploaded_files.getvalue()
-    st.sidebar.write("filename:", uploaded_files.name)
-    stringio = StringIO(uploaded_files.getvalue().decode("utf-8"))
-    st.write(stringio)
+#     st.sidebar.write("filename:", uploaded_files.name)
     new_data = pd.read_csv(uploaded_files)
     st.write(new_data)
+    input_ndata = [new_data.bid_quality,new_data.bid_volume, new_data.ask_quality, new_data.ask_volume, new_data.matching_volume, new_data.negotiable_volume,
+                  new_data.Positive, new_data.Negative, new_data.SMA_10, new_data.SMA_20, new_data.EMA_10, new_data.EMA_20, new_data.RSI_7d, new_data.RSI_9d, new_data.RSI_14d]
+    pred_new = scaler.predict([input_ndata])
+    pred_new_prob = scaler.predict_proba([input_ndata])
+    st.write(pred_new)   
+ else:
+    st.warning('You do not input neccessary features', icon="⚠️")
     
     
 
