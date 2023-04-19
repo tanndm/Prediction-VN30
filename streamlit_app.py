@@ -6,7 +6,8 @@ import joblib
 import webbrowser as wb
 import streamlit as st
 import time
-from sklearn.svm import SVC
+# from sklearn.svm import SVC
+from sklearn.ensemble import RandomForestClassifier
 from sklearn.preprocessing import StandardScaler
     
 # -- Set page config
@@ -41,7 +42,12 @@ sc_X = StandardScaler()
 # Scale train set
 X = sc_X.fit_transform(X)
 # train SVM model
-model = SVC(kernel = 'rbf', probability=True, random_state = n_state)
+model = RandomForestClassifier(random_state=n_state,
+                                        n_estimators=3500, 
+                                        min_samples_leaf = 4,
+                                        max_depth = 25,
+                                        criterion="log_loss",
+                                        min_samples_split=4)
 model.fit(X, y)
 
 
