@@ -192,7 +192,7 @@ import datetime
 #     datetime.date(2023, 4, 4))
 st.header("Forcasting result")
 ########################################################################
-select_event = st.sidebar.selectbox(':green[##Methods##]',
+select_event = st.sidebar.selectbox(':green[#### Methods]',
                                     ['Manual input', 'Upload file'])
 
 if select_event == 'Manual input':
