@@ -253,13 +253,16 @@ elif select_event == 'Upload file':
   if uploaded_files is not None:
     bytes_data = uploaded_files.getvalue()
 #     st.sidebar.write("filename:", uploaded_files.name)
-    new_data = pd.read_csv(uploaded_files)
+    new_data = pd.read_csv(uploaded_files,index_col=0)
     st.write(new_data)
+    
     input_ndata = [new_data.bid_quality,new_data.bid_volume, new_data.ask_quality, new_data.ask_volume, new_data.matching_volume, new_data.negotiable_volume,
                   new_data.Positive, new_data.Negative, new_data.SMA10, new_data.SMA20, new_data.EMA_10, new_data.EMA_20, new_data.RSI_7d, new_data.RSI_9d, new_data.RSI_14d]
-    pred_new = scaler.predict(input_ndata)
-    pred_new_prob = scaler.predict_proba(input_ndata)
-    st.write(pred_new)
+    
+    st.write(input_ndata)
+#     pred_new = scaler.predict(input_ndata)
+#     pred_new_prob = scaler.predict_proba(input_ndata)
+#     st.write(pred_new)
   else:
     st.warning('You do not input neccessary features', icon="⚠️")
     
