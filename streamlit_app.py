@@ -225,7 +225,7 @@ if select_event == 'Manual input':
     pred_prob = scaler.predict_proba([input_Data])
 #     pred_prob = scaler.predict_proba(np.array(input_Data,ndmin=2))
     
-    if st.sidebar.button('#### Submit data'):
+    if st.sidebar.button('#### Submit data and make prediction'):
         st.sidebar.success('This is a success updating!', icon="✅")
         progress_text = "Operation in progress. Please wait."
         my_bar = st.progress(0, text=progress_text)
@@ -244,7 +244,7 @@ if select_event == 'Manual input':
             time.sleep(1)
         st.warning('You do not input neccessary features', icon="⚠️")
         
-elif select_event == 'Upload file':
+elif select_event == 'Upload file and make prediction':
   sample_df = pd.DataFrame({'Number of buy orders': 66774, 'Buy-orders volume':196533544, 'Number of sell orders':58645, 'Sell-orders volume':199406752,
                            'Order matching volume':107108336, 'Put-through volume':7176062, 'Positive':1, 'Negative':0,
                            'SMA_10':1020, 'SMA_20':1019, 'EMA_10':1020, 'EMA_20':1019, 'RSI_7d':56, 
