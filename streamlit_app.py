@@ -12,14 +12,15 @@ from sklearn.preprocessing import StandardScaler
 
 # -- Set page config
 apptitle = 'Predict VN30-index price movement using financial news and technical analysis'
-st.set_page_config(page_title=apptitle, layout="centered",initial_sidebar_state = "auto",
-#                    page_icon="chart_with_upwards_trend",
-                   page_icon="🧊", layout="wide",
-                  menu_items={
-        'Get Help': 'https://www.extremelycoolapp.com/help',
-        'Report a bug': "https://www.extremelycoolapp.com/bug",
-        'About': "# This is a header. This is an *extremely* cool app!"
-    })
+st.set_page_config(page_title=apptitle, 
+                   layout="centered",
+                   page_icon="🧊",
+                   initial_sidebar_state="auto",
+#                  page_icon="chart_with_upwards_trend",
+                   menu_items={
+                   'Get Help': 'https://www.extremelycoolapp.com/help',
+                   'Report a bug': "https://www.extremelycoolapp.com/bug",
+                   'About': "# This is a header. This is an *extremely* cool app!"})
 
 # # Unpacking Scaler pkl file
 S_file = open('model_rf.pkl','rb')
