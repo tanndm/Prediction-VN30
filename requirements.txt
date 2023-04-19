@@ -1,4 +1,4 @@
-catboost
+svm
 joblib
 numpy
 pandas
