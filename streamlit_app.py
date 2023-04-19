@@ -252,6 +252,6 @@ elif select_event == 'Upload file':
   for uploaded_file in uploaded_files:
     bytes_data = uploaded_file.read()
     st.sidebar.write("filename:", uploaded_file.name)
-    st.write(uploaded_files.data)
+    st.write(bytes_data)
 
 
