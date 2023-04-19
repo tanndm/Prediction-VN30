@@ -244,8 +244,13 @@ elif select_event == 'Upload file':
                            'SMA_10':1020, 'SMA_20':1019, 'EMA_10':1020, 'EMA_20':1019, 'RSI_7d':56, 
                            'RSI_9d':55, 'RSI_14d':54},index=["dd-MM-YY"])
   if st.sidebar.button('Sample Data'):
-      with st.spinner('Wait for it...'):
-        time.sleep(2)
+      progress_text = "Operation in progress. Please wait."
+      my_bar = st.progress(0, text=progress_text)
+      for percent_complete in range(50):
+          time.sleep(0.1)
+          my_bar.progress(percent_complete + 1, text=progress_text)
+#       with st.spinner('Wait for it...'):
+#         time.sleep(2)
       st.write("Please upload data like the sample:")
       st.dataframe(sample_df)
 
@@ -264,8 +269,7 @@ elif select_event == 'Upload file':
     
     progress_text = "Operation in progress. Please wait."
     my_bar = st.progress(0, text=progress_text)
-
-    for percent_complete in range(100):
+    for percent_complete in range(50):
         time.sleep(0.1)
         my_bar.progress(percent_complete + 1, text=progress_text)
 
