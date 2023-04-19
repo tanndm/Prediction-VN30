@@ -255,9 +255,9 @@ if select_event == 'Manual input':
         st.success('This is a success updating!', icon="✅")
         st.dataframe(res_df)
         pred_out(pred)
-        df_prob = pd.DataFrame({'Downtrend':pred_prob[:,0], 'Uptrend':pred_prob[:,1]},index=["21-04-2023"])
-        df_prob.index = df_prob.index.set_names("Probability")
-        st.dataframe(df_prob)
+#         df_prob = pd.DataFrame({'Downtrend':pred_prob[:,0], 'Uptrend':pred_prob[:,1]},index=["21-04-2023"])
+#         df_prob.index = df_prob.index.set_names("Probability")
+#         st.dataframe(df_prob)
     else:
         with st.spinner('Wait for it...'):
             time.sleep(1)
