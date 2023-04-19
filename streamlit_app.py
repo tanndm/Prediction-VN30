@@ -224,10 +224,9 @@ if select_event == 'Manual input':
 #     pred_prob = scaler.predict_proba(np.array(input_Data,ndmin=2))
     
     if st.sidebar.button('Submit data'):
-        st.sidebar.success("Processing...")
-#         with st.spinner('Wait for it...'):
-#             time.sleep(2)
-        st.success('This is a success updating!', icon="✅")
+        st.sidebar.success('This is a success updating!', icon="✅")
+        with st.spinner('Wait for it...'):
+            time.sleep(2)
         st.dataframe(res_df)
         pred_out(pred)
         df_prob = pd.DataFrame({'Downtrend':pred_prob[:,0], 'Uptrend':pred_prob[:,1]},index=["05-05-2023"])
@@ -253,8 +252,8 @@ elif select_event == 'Upload file':
   for uploaded_file in uploaded_files:
     bytes_data = uploaded_file.read()
     st.sidebar.write("filename:", uploaded_file.name)
-    file_new = load_data(bytes_data)
-    st.dataframe(file_new)
+    st.write(bytes_data)
+
     
 
 
