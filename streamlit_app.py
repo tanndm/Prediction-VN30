@@ -17,7 +17,8 @@ st.set_page_config(page_title=apptitle,
                    layout="wide")
 
 # # Unpacking Scaler pkl file
-S_file = open('model_rf.pkl','rb')
+# S_file = open('model_rf.pkl','rb')
+S_file = open('model_svm.pkl','rb')
 scaler = joblib.load(S_file)
 
 # Function to print out put which also converts numeric output from ML module to understandable STR 
@@ -233,11 +234,11 @@ if select_event == 'Manual input':
             my_bar.progress(percent_complete + 1, text=progress_text)
 #         with st.spinner('Wait for it...'):
 #             time.sleep(2)
-        st.dataframe(res_df)
+        st.dataframe(res_df,use_container_width=True)
         pred_out(pred)
         df_prob = pd.DataFrame({'Downtrend':pred_prob[:,0], 'Uptrend':pred_prob[:,1]},index=["05-05-2023"])
         df_prob.index = df_prob.index.set_names("Probability")
-        st.dataframe(df_prob)
+        st.dataframe(df_prob,use_container_width=True)
     else:
         with st.spinner('Wait for it...'):
             time.sleep(1)
