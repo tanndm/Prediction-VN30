@@ -14,7 +14,7 @@ st.set_page_config(page_title=apptitle,
                    layout="wide")
 
 # Unpacking Scaler pkl file
-S_file = open('model.pkl','rb')
+S_file = open('model_svm.pkl','rb')
 scaler = joblib.load(S_file)
 
 # Function to print out put which also converts numeric output from ML module to understandable STR 
