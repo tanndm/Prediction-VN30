@@ -215,15 +215,15 @@ if select_event == 'Manual input':
     
     input_Data = [res_df.bid_quality, res_df.bid_volume, res_df.ask_quality, res_df.ask_volume, res_df.matching_volume, res_df.matching_volume,
                res_df.Positive, res_df.Negative, res_df.SMA_10, res_df.SMA_20, res_df.EMA_10, res_df.EMA_20, res_df.RSI_7d, res_df.RSI_9d, res_df.RSI_14d]    
-    pred = scaler.predict(np.array(input_Data,ndmin=1))
-    pred_prob = scaler.predict_proba(np.array(input_Data,ndmin=1))
+    
+    pred = scaler.predict(np.array(input_Data,ndmin=2))
+    pred_prob = scaler.predict_proba(np.array(input_Data,ndmin=2))
     
     if st.sidebar.button('Submit data'):
         with st.spinner('Wait for it...'):
             time.sleep(2)
         st.success('This is a success updating!', icon="✅")
         st.dataframe(res_df)
-        st.write(pred)
         pred_out(pred)
         df_prob = pd.DataFrame({'Downtrend':pred_prob[:,0], 'Uptrend':pred_prob[:,1]},index=["21-04-2023"])
         df_prob.index = df_prob.index.set_names("Probability")
