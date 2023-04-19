@@ -255,15 +255,14 @@ elif select_event == 'Upload file':
 #     st.sidebar.write("filename:", uploaded_files.name)
     new_data = pd.read_csv(uploaded_files,index_col=0)
     st.write(new_data)
-    
-#     input_ndata = [new_data.bid_quality, new_data.bid_volume, new_data.ask_quality, new_data.ask_volume, new_data.matching_volume, new_data.negotiable_volume,
-#                   new_data.Positive, new_data.Negative, new_data.SMA10, new_data.SMA20, new_data.EMA_10, new_data.EMA_20, new_data.RSI_7d, new_data.RSI_9d, new_data.RSI_14d]
+   
     X= new_data.iloc[:,:-1]
-    
-#     st.write(X)
     pred_new = scaler.predict(X)
-#     pred_new_prob = scaler.predict_proba(input_ndata)
-    st.write(pred_new)
+    pred_new_prob = scaler.predict_proba(X)
+    df_final = pd.DataFrame({"Predict":pred_new
+                             'Downtrend':pred_new_prob[:,0], 
+                             'Uptrend':pred_new_prob[:,1]},index=new_data.index)
+    st.write(df_final)
   else:
     st.warning('You do not input neccessary features', icon="⚠️")
     
