@@ -195,7 +195,7 @@ import datetime
 st.header("Forcasting result")
 ########################################################################
 select_event = st.sidebar.selectbox('#### Methods',
-                                    ['None','Manual input', 'Upload file'])
+                                    ['Manual input', 'Upload file','Select'])
 
 if select_event == 'Manual input':
     bid_quality = st.sidebar.number_input("bid_quality", value=66774)
@@ -221,12 +221,9 @@ if select_event == 'Manual input':
     
     input_Data = [bid_quality,bid_volume, ask_quality, ask_volume, matching_volume, negotiable_volume,
                positive, negative, SMA_10_lag, SMA_20_lag, EMA_10_lag, EMA_20_lag, RSI_7d_lag, RSI_9d_lag, RSI_14d_lag]    
-    
-#     pred = scaler.predict(np.array(input_Data,ndmin=2))
     pred = scaler.predict([input_Data])
     pred_prob = scaler.predict_proba([input_Data])
-#     pred_prob = scaler.predict_proba(np.array(input_Data,ndmin=2))
-    
+   
     if st.sidebar.button('#### Submit data and make prediction'):
         st.sidebar.success('This is a success updating!', icon="✅")
         progress_text = "Operation in progress. Please wait."
@@ -257,8 +254,6 @@ elif select_event == 'Upload file':
       st.write("Please upload data like the sample:")
       st.dataframe(sample_df)
       st.write(sample_df.columns)
-    
-
   uploaded_files = st.sidebar.file_uploader("Choose a CSV file")
   if uploaded_files is not None:
     bytes_data = uploaded_files.getvalue()
@@ -285,7 +280,7 @@ elif select_event == 'Upload file':
         pass
   else:
     st.warning('You do not input neccessary features', icon="⚠️")
-elif select_event == 'None':
+elif select_event == 'Select':
   pass
     
 
