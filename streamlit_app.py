@@ -246,7 +246,7 @@ if select_event == 'Manual input':
     
 #     pred = scaler.predict(np.array(input_Data,ndmin=2))
     pred = model.predict([input_Data])
-    pred_prob = scaler.predict_proba([input_Data])
+#     pred_prob = scaler.predict_proba([input_Data])
 #     pred_prob = scaler.predict_proba(np.array(input_Data,ndmin=2))
     
     if st.sidebar.button('Submit data'):
