@@ -1,4 +1,4 @@
-svm
+sklearn
 joblib
 numpy
 pandas
