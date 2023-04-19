@@ -250,12 +250,12 @@ elif select_event == 'Upload file':
       st.dataframe(sample_df)
 
   uploaded_files = st.sidebar.file_uploader("Choose a CSV file")
-  if uploaded_file is not None:
-    bytes_data = uploaded_file.getvalue()
-    st.sidebar.write("filename:", uploaded_file.name)
-    stringio = StringIO(uploaded_file.getvalue().decode("utf-8"))
+  if uploaded_files is not None:
+    bytes_data = uploaded_files.getvalue()
+    st.sidebar.write("filename:", uploaded_files.name)
+    stringio = StringIO(uploaded_files.getvalue().decode("utf-8"))
     st.write(stringio)
-    new_data = pd.read_csv(uploaded_file)
+    new_data = pd.read_csv(uploaded_files)
     st.write(new_data)
     
     
