@@ -244,7 +244,7 @@ if select_event == 'Manual input':
             time.sleep(1)
         st.warning('You do not input neccessary features', icon="⚠️")
         
-elif select_event == 'Upload file and make prediction':
+elif select_event == 'Upload file':
   sample_df = pd.DataFrame({'Number of buy orders': 66774, 'Buy-orders volume':196533544, 'Number of sell orders':58645, 'Sell-orders volume':199406752,
                            'Order matching volume':107108336, 'Put-through volume':7176062, 'Positive':1, 'Negative':0,
                            'SMA_10':1020, 'SMA_20':1019, 'EMA_10':1020, 'EMA_20':1019, 'RSI_7d':56, 
@@ -264,17 +264,20 @@ elif select_event == 'Upload file and make prediction':
     X= new_data.iloc[:,:-1]
     pred_new = scaler.predict(X)
     pred_new_prob = scaler.predict_proba(X)
+    
     df_final = pd.DataFrame({"Predict":pred_new,
                              'Downtrend':pred_new_prob[:,0], 
                              'Uptrend':pred_new_prob[:,1]},index=new_data.index)
-    
-    progress_text = "Operation in progress. Please wait."
-    my_bar = st.progress(100, text=progress_text)
-    for percent_complete in range(100):
-        time.sleep(0.1)
-        my_bar.progress(percent_complete + 1, text=progress_text)
+    if st.sidebar.button('#### Submit data and make prediction'):
+        progress_text = "Operation in progress. Please wait."
+        my_bar = st.progress(100, text=progress_text)
+        for percent_complete in range(100):
+            time.sleep(0.1)
+            my_bar.progress(percent_complete + 1, text=progress_text)
 
-    st.dataframe(df_final,use_container_width=True)
+        st.dataframe(df_final,use_container_width=True)
+    else:
+        pass
   else:
     st.warning('You do not input neccessary features', icon="⚠️")
     
