@@ -6,6 +6,7 @@ import joblib
 import webbrowser as wb
 import streamlit as st
 import time
+from sklearn.svm import SVC
     
 # -- Set page config
 apptitle = 'Predict VN30-index price movement using financial news and technical analysis'
@@ -13,9 +14,35 @@ st.set_page_config(page_title=apptitle,
                    page_icon="chart_with_upwards_trend",
                    layout="wide")
 
-# Unpacking Scaler pkl file
-S_file = open('model_svm.pkl','rb')
-scaler = joblib.load(S_file)
+# # Unpacking Scaler pkl file
+# S_file = open('model_svm.pkl','rb')
+# scaler = joblib.load(S_file)
+
+data = pd.read_csv(r"https://raw.githubusercontent.com/BrianNguyen2001/Prediction-VN30/main/cleaned_data_5.csv",
+                    index_col=0,
+                    parse_dates=True)                    
+data.index = data.index.astype("datetime64[ns]")
+data.index = data.index.set_names("Time")
+data = data[['bid_quality', 'bid_volume', 'ask_quality', 'ask_volume',
+       'matching_volume', 'negotiable_volume', 'SMA10', 'SMA20', 'EMA_10',
+       'EMA_20', 'RSI_7d', 'RSI_9d','RSI_14d', 'Positive', 'Negative', 'return_vn30']]
+# News
+df = data.copy() 
+# Set the independent variable property
+feature = df.columns[df.columns!='return_vn30'].to_list()
+target = [df.columns[-1]]
+y = df[target]
+X = df[feature]
+# Split the train and test
+n_state = 1745
+# Call scale function
+sc_X = StandardScaler()
+# Scale train set
+X = sc_X.fit_transform(X)
+# train SVM model
+model = SVC(kernel = 'rbf', probability=True, random_state = n_state)
+model.fit(X, y)
+
 
 # Function to print out put which also converts numeric output from ML module to understandable STR 
 def pred_out(num):
@@ -216,8 +243,10 @@ if select_event == 'Manual input':
     input_Data = [bid_quality,bid_volume, ask_quality, ask_volume, matching_volume, matching_volume,
                positive, negative, SMA_10_lag, SMA_20_lag, EMA_10_lag, EMA_20_lag, RSI_7d_lag, RSI_9d_lag, RSI_14d_lag]    
     
-    pred = scaler.predict(np.array(input_Data,ndmin=2))
-    pred_prob = scaler.predict_proba(np.array(input_Data,ndmin=2))
+#     pred = scaler.predict(np.array(input_Data,ndmin=2))
+    pred = model.predict([input_Data])
+    pred_prob = scaler.predict_proba([input_Data])
+#     pred_prob = scaler.predict_proba(np.array(input_Data,ndmin=2))
     
     if st.sidebar.button('Submit data'):
         with st.spinner('Wait for it...'):
