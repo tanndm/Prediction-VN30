@@ -259,7 +259,7 @@ elif select_event == 'Upload file':
     X= new_data.iloc[:,:-1]
     pred_new = scaler.predict(X)
     pred_new_prob = scaler.predict_proba(X)
-    df_final = pd.DataFrame({"Predict":pred_new
+    df_final = pd.DataFrame({"Predict":pred_new,
                              'Downtrend':pred_new_prob[:,0], 
                              'Uptrend':pred_new_prob[:,1]},index=new_data.index)
     st.write(df_final)
