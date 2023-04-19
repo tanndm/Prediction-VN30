@@ -263,6 +263,7 @@ elif select_event == 'Upload file':
                              'Downtrend':pred_new_prob[:,0], 
                              'Uptrend':pred_new_prob[:,1]},index=new_data.index)
     st.write(df_final)
+    pred_out(pred_new)
   else:
     st.warning('You do not input neccessary features', icon="⚠️")
     
