@@ -195,7 +195,7 @@ import datetime
 st.header("Forcasting result")
 ########################################################################
 select_event = st.sidebar.selectbox('#### Methods',
-                                    ['--','Manual input', 'Upload file'])
+                                    ['None','Manual input', 'Upload file'])
 
 if select_event == 'Manual input':
     bid_quality = st.sidebar.number_input("bid_quality", value=66774)
@@ -285,7 +285,7 @@ elif select_event == 'Upload file':
         pass
   else:
     st.warning('You do not input neccessary features', icon="⚠️")
-else:
+elif select_event == 'None':
   pass
     
 
