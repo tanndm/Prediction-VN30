@@ -6,6 +6,7 @@ import joblib
 import webbrowser as wb
 import streamlit as st
 import time
+from io import StringIO
 from sklearn.svm import SVC
 from sklearn.preprocessing import StandardScaler
     
@@ -248,11 +249,16 @@ elif select_event == 'Upload file':
       st.write("Please upload data like the sample:")
       st.dataframe(sample_df)
 
-  uploaded_files = st.sidebar.file_uploader("Choose a CSV file", accept_multiple_files=True)
-  for uploaded_file in uploaded_files:
-    bytes_data = uploaded_file.read()
+  uploaded_files = st.sidebar.file_uploader("Choose a CSV file")
+  if uploaded_file is not None:
+    bytes_data = uploaded_file.getvalue()
     st.sidebar.write("filename:", uploaded_file.name)
-    st.dataframe(bytes_data)
+    stringio = StringIO(uploaded_file.getvalue().decode("utf-8"))
+    st.write(stringio)
+    new_data = pd.read_csv(uploaded_file)
+    st.write(new_data)
+    
+    
 
     
 
