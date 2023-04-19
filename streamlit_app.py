@@ -228,9 +228,9 @@ if select_event == 'Manual input':
         st.sidebar.success('This is a success updating!', icon="✅")
         progress_text = "Operation in progress. Please wait."
         my_bar = st.progress(0, text=progress_text)
-        for percent_complete in range(50):
+        for percent_complete in range(100):
             time.sleep(0.1)
-            my_bar.progress(percent_complete + 10, text=progress_text)
+            my_bar.progress(percent_complete + 1, text=progress_text)
 #         with st.spinner('Wait for it...'):
 #             time.sleep(2)
         st.dataframe(res_df)
@@ -268,7 +268,7 @@ elif select_event == 'Upload file':
                              'Uptrend':pred_new_prob[:,1]},index=new_data.index)
     
     progress_text = "Operation in progress. Please wait."
-    my_bar = st.progress(0, text=progress_text)
+    my_bar = st.progress(100, text=progress_text)
     for percent_complete in range(100):
         time.sleep(0.1)
         my_bar.progress(percent_complete + 10, text=progress_text)
