@@ -260,8 +260,8 @@ elif select_event == 'Upload file':
 #                   new_data.Positive, new_data.Negative, new_data.SMA10, new_data.SMA20, new_data.EMA_10, new_data.EMA_20, new_data.RSI_7d, new_data.RSI_9d, new_data.RSI_14d]
     X= new_data.iloc[:,:-1]
     
-    st.write(X)
-#     pred_new = scaler.predict(input_ndata)
+#     st.write(X)
+    pred_new = scaler.predict(X)
 #     pred_new_prob = scaler.predict_proba(input_ndata)
 #     st.write(pred_new)
   else:
