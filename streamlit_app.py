@@ -7,6 +7,7 @@ import webbrowser as wb
 import streamlit as st
 import time
 from sklearn.svm import SVC
+from sklearn.preprocessing import StandardScaler
     
 # -- Set page config
 apptitle = 'Predict VN30-index price movement using financial news and technical analysis'
