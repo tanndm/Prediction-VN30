@@ -48,7 +48,7 @@ X = sc_X.fit_transform(X)
 #                                         max_depth = 25,
 #                                         criterion="log_loss",
 #                                         min_samples_split=4)
-model = SVC(kernel = 'poly',random_state = n_state)
+model = SVC(kernel = 'poly',probability=True,random_state = n_state)
 model.fit(X, y)
 
 
