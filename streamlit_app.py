@@ -268,13 +268,12 @@ elif select_event == 'Upload file':
     df_final = pd.DataFrame({"Predict":pred_new,
                              'Downtrend':pred_new_prob[:,0], 
                              'Uptrend':pred_new_prob[:,1]},index=new_data.index)
-    if st.sidebar.button('#### Submit data and make prediction'):
+    if st.sidebar.button('#### Make prediction'):
         progress_text = "Operation in progress. Please wait."
         my_bar = st.progress(100, text=progress_text)
         for percent_complete in range(100):
             time.sleep(0.1)
             my_bar.progress(percent_complete + 1, text=progress_text)
-
         st.dataframe(df_final,use_container_width=True)
     else:
         pass
