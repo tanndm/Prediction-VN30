@@ -41,14 +41,14 @@ n_state = 1745
 sc_X = StandardScaler()
 # Scale train set
 X = sc_X.fit_transform(X)
-# train SVM model
-# model = RandomForestClassifier(random_state=n_state,
-#                                         n_estimators=500, 
-#                                         min_samples_leaf = 4,
-#                                         max_depth = 25,
-#                                         criterion="log_loss",
-#                                         min_samples_split=4)
-model = SVC(kernel = 'poly',probability=True,random_state = n_state)
+# train model
+model = RandomForestClassifier(random_state=n_state,
+                                        n_estimators=500, 
+                                        min_samples_leaf = 4,
+                                        max_depth = 25,
+                                        criterion="log_loss",
+                                        min_samples_split=4)
+# model = SVC(kernel = 'poly',probability=True,random_state = n_state)
 model.fit(X, y)
 
 
