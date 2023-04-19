@@ -224,8 +224,9 @@ if select_event == 'Manual input':
 #     pred_prob = scaler.predict_proba(np.array(input_Data,ndmin=2))
     
     if st.sidebar.button('Submit data'):
-        with st.spinner('Wait for it...'):
-            time.sleep(2)
+        st.sidebar.success("Processing...")
+#         with st.spinner('Wait for it...'):
+#             time.sleep(2)
         st.success('This is a success updating!', icon="✅")
         st.dataframe(res_df)
         pred_out(pred)
