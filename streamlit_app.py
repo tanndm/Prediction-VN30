@@ -15,7 +15,7 @@ apptitle = 'Predict VN30-index price movement using financial news and technical
 st.set_page_config(page_title=apptitle, 
                    layout="wide",
                    page_icon="🧊",
-                   initial_sidebar_state="expanded",
+                   initial_sidebar_state="expanded")
 #                  page_icon="chart_with_upwards_trend")
 
 # # Unpacking Scaler pkl file
