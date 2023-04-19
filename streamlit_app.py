@@ -255,6 +255,7 @@ elif select_event == 'Upload file':
       st.write("Please upload data like the sample:")
       st.dataframe(sample_df)
       st.write(sample_df.columns)
+    
 
   uploaded_files = st.sidebar.file_uploader("Choose a CSV file")
   if uploaded_files is not None:
@@ -263,6 +264,8 @@ elif select_event == 'Upload file':
     new_data = pd.read_csv(uploaded_files,index_col=0)
 #     st.write(new_data)   
     X= new_data.iloc[:,:-1]
+    X.columns = ["Number of buy orders","Buy-orders volume","Number of sell orders","Sell-orders volume","Order matching volume","Put-through volume",
+                 "Positive","Negative","SMA_10","SMA_20","EMA_10","EMA_20","RSI_7d","RSI_9d","RSI_14d"]
     pred_new = scaler.predict(X)
     pred_new_prob = scaler.predict_proba(X)
     
