@@ -260,7 +260,7 @@ elif select_event == 'Upload file':
     pred_new = scaler.predict([input_ndata])
     pred_new_prob = scaler.predict_proba([input_ndata])
     st.write(pred_new)   
- else:
+  else:
     st.warning('You do not input neccessary features', icon="⚠️")
     
     
