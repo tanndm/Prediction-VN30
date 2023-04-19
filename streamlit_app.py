@@ -262,8 +262,8 @@ elif select_event == 'Upload file':
     df_final = pd.DataFrame({"Predict":pred_new,
                              'Downtrend':pred_new_prob[:,0], 
                              'Uptrend':pred_new_prob[:,1]},index=new_data.index)
-    pd.set_option('display.max_columns', 10)
-    st.write(df_final)
+
+    st.dataframe(df_final)
   else:
     st.warning('You do not input neccessary features', icon="⚠️")
     
