@@ -226,8 +226,13 @@ if select_event == 'Manual input':
     
     if st.sidebar.button('Submit data'):
         st.sidebar.success('This is a success updating!', icon="✅")
-        with st.spinner('Wait for it...'):
-            time.sleep(2)
+        progress_text = "Operation in progress. Please wait."
+        my_bar = st.progress(0, text=progress_text)
+        for percent_complete in range(50):
+            time.sleep(0.1)
+            my_bar.progress(percent_complete + 10, text=progress_text)
+#         with st.spinner('Wait for it...'):
+#             time.sleep(2)
         st.dataframe(res_df)
         pred_out(pred)
         df_prob = pd.DataFrame({'Downtrend':pred_prob[:,0], 'Uptrend':pred_prob[:,1]},index=["05-05-2023"])
@@ -244,13 +249,8 @@ elif select_event == 'Upload file':
                            'SMA_10':1020, 'SMA_20':1019, 'EMA_10':1020, 'EMA_20':1019, 'RSI_7d':56, 
                            'RSI_9d':55, 'RSI_14d':54},index=["dd-MM-YY"])
   if st.sidebar.button('Sample Data'):
-      progress_text = "Operation in progress. Please wait."
-      my_bar = st.progress(0, text=progress_text)
-      for percent_complete in range(50):
-          time.sleep(0.1)
-          my_bar.progress(percent_complete + 1, text=progress_text)
-#       with st.spinner('Wait for it...'):
-#         time.sleep(2)
+      with st.spinner('Wait for it...'):
+        time.sleep(2)
       st.write("Please upload data like the sample:")
       st.dataframe(sample_df)
 
@@ -270,8 +270,8 @@ elif select_event == 'Upload file':
     progress_text = "Operation in progress. Please wait."
     my_bar = st.progress(0, text=progress_text)
     for percent_complete in range(100):
-        time.sleep(0.02)
-        my_bar.progress(percent_complete + 5, text=progress_text)
+        time.sleep(0.1)
+        my_bar.progress(percent_complete + 10, text=progress_text)
 
     st.dataframe(df_final,use_container_width=True)
   else:
