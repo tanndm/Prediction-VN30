@@ -213,10 +213,10 @@ if select_event == 'Manual input':
                            'SMA_10':SMA_10_lag, 'SMA_20':SMA_20_lag, 'EMA_10':EMA_10_lag, 'EMA_20':EMA_20_lag, 'RSI_7d':RSI_7d_lag, 
                            'RSI_9d':RSI_9d_lag, 'RSI_14d':RSI_14d_lag},index=["21-04-2023"])
     
-    input_Data = [bid_quality, bid_volume, ask_quality, ask_volume, matching_volume, matching_volume,
-               positive, negative, SMA_10_lag, SMA_20_lag, EMA_10_lag, EMA_20_lag, RSI_7d_lag, RSI_9d_lag, RSI_14d_lag]    
-    pred = scaler.predict(np.array(input_Data,ndmin=2))
-#     pred = scaler.predict(input_Data)
+    input_Data = [res_df.bid_quality, res_df.bid_volume, res_df.ask_quality, res_df.ask_volume, res_df.matching_volume, res_df.matching_volume,
+               res_df.positive, res_df.negative, res_df.SMA_10, res_df.SMA_20, res_df.EMA_10, res_df.EMA_20, res_df.RSI_7d, res_df.RSI_9d, res_df.RSI_14d]    
+#     pred = scaler.predict(np.array(input_Data,ndmin=2))
+    pred = scaler.predict(res_df)
     pred_prob = scaler.predict_proba(np.array(input_Data,ndmin=2))
     
     if st.sidebar.button('Submit data'):
