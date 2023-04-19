@@ -195,7 +195,7 @@ import datetime
 st.header("Forcasting result")
 ########################################################################
 select_event = st.sidebar.selectbox('#### Methods',
-                                    ['Manual input', 'Upload file','Select'])
+                                    ['Select','Manual input', 'Upload file'])
 
 if select_event == 'Manual input':
     bid_quality = st.sidebar.number_input("bid_quality", value=66774)
