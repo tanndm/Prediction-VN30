@@ -21,7 +21,7 @@ scaler = joblib.load(S_file)
 def pred_out(num):
   if num == 1:
     st.info('THE VN30-INDEX WILL :green[BE UPTREND]', icon="ℹ️")
-  elif num == 0:
+  else:
     st.info('THE VN30-INDEX WILL BE :red[DOWNTREND]', icon="ℹ️")
 
 st.title('Application :blue[Deep Learning] and :red[Machine Learning] in predicting VN30-index price movement using financial news and technical analysis')
@@ -91,8 +91,7 @@ fig.update_layout(
         x=1
     ),
     xaxis_title="Date",
-    yaxis_title="Price"
-)
+    yaxis_title="Price")
 
 fig.update_layout(xaxis_rangeslider_visible=False)
 st.plotly_chart(fig, theme="streamlit", use_container_width=True)
@@ -214,16 +213,18 @@ if select_event == 'Manual input':
                            'SMA_10':SMA_10_lag, 'SMA_20':SMA_20_lag, 'EMA_10':EMA_10_lag, 'EMA_20':EMA_20_lag, 'RSI_7d':RSI_7d_lag, 
                            'RSI_9d':RSI_9d_lag, 'RSI_14d':RSI_14d_lag},index=["21-04-2023"])
     
-    features= [bid_quality, bid_volume, ask_quality, ask_volume, matching_volume, matching_volume,
+    input_Data = [bid_quality, bid_volume, ask_quality, ask_volume, matching_volume, matching_volume,
                positive, negative, SMA_10_lag, SMA_20_lag, EMA_10_lag, EMA_20_lag, RSI_7d_lag, RSI_9d_lag, RSI_14d_lag]    
-    pred = scaler.predict(np.array(features,ndmin=2))
-    pred_prob = scaler.predict_proba(np.array(features,ndmin=2))
+#     pred = scaler.predict(np.array(input_Data,ndmin=2))
+    pred = scaler.predict(input_Data)
+    pred_prob = scaler.predict_proba(np.array(input_Data,ndmin=2))
     
     if st.sidebar.button('Submit data'):
         with st.spinner('Wait for it...'):
             time.sleep(2)
         st.success('This is a success updating!', icon="✅")
         st.dataframe(res_df)
+        st.write(pred)
         pred_out(pred)
         df_prob = pd.DataFrame({'Downtrend':pred_prob[:,0], 'Uptrend':pred_prob[:,1]},index=["21-04-2023"])
         df_prob.index = df_prob.index.set_names("Probability")
