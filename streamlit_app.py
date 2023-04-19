@@ -254,8 +254,7 @@ elif select_event == 'Upload file':
     bytes_data = uploaded_files.getvalue()
 #     st.sidebar.write("filename:", uploaded_files.name)
     new_data = pd.read_csv(uploaded_files,index_col=0)
-    st.write(new_data)
-   
+#     st.write(new_data)   
     X= new_data.iloc[:,:-1]
     pred_new = scaler.predict(X)
     pred_new_prob = scaler.predict_proba(X)
