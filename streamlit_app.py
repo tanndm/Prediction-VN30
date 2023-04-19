@@ -195,7 +195,7 @@ st.header("Forcasting result")
 select_event = st.sidebar.selectbox('#### Methods',
                                     ['Manual input', 'Upload file'])
 
-if select_event == '## Manual input':
+if select_event == 'Manual input':
     bid_quality = st.sidebar.number_input("bid_quality", value=66774)
     bid_volume = st.sidebar.number_input("bid_volume", value=196533544)
     ask_quality = st.sidebar.number_input("ask_quality", value=58645)
@@ -244,7 +244,7 @@ if select_event == '## Manual input':
             time.sleep(1)
         st.warning('You do not input neccessary features', icon="⚠️")
         
-elif select_event == '## Upload file':
+elif select_event == 'Upload file':
   sample_df = pd.DataFrame({'Number of buy orders': 66774, 'Buy-orders volume':196533544, 'Number of sell orders':58645, 'Sell-orders volume':199406752,
                            'Order matching volume':107108336, 'Put-through volume':7176062, 'Positive':1, 'Negative':0,
                            'SMA_10':1020, 'SMA_20':1019, 'EMA_10':1020, 'EMA_20':1019, 'RSI_7d':56, 
