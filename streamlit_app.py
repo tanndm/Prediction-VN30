@@ -138,7 +138,7 @@ fig2.update_layout(
 )
 
 
-st.sidebar.image('bearish-and-bullish-in-stock-market-science-gold-vector-36657484.jpg', width=220)
+st.sidebar.image('bearish-and-bullish-in-stock-market-science-gold-vector-36657484.jpg', width=250)
 st.sidebar.markdown('#### Support tool')
 st.sidebar.markdown('#### VN30-Index data table from 2017 to 2023')
 click_data = st.sidebar.checkbox('Click here to show out all of historical data of VN30-Index', value=False)
@@ -285,8 +285,3 @@ elif select_event == 'Upload file':
     st.warning('You do not input neccessary features', icon="⚠️")
 elif select_event == 'Select':
   pass
-    
-
-    
-
-
