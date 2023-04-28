@@ -55,5 +55,5 @@ if st.button('Get'):
 #     st.title(title_list)
 
 translator = Translator()
-trans = translator.translate("Cổ phiếu hàng không tăng mạnh", dest='en')
+trans = translator.translate("Cổ phiếu ngành hàng không tăng phi mã", src='vi', dest='en')
 st.write(trans.text)
