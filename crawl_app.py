@@ -61,7 +61,10 @@ if st.button('Get'):
     st.write(df_2)
 
 
-span_element = soup.find('span', {'xpath': '/html/body/section[5]/div/div[2]/div[1]/span'})
+    
+response_test = requests.get("https://vnexpress.net/khoi-ngoai-lien-tiep-mua-rong-co-phieu-4579445.html")
+soup_test = BeautifulSoup(response_test.content, 'html.parser')
+span_element = soup_test.find('span', {'xpath': '/html/body/section[5]/div/div[2]/div[1]/span'})
 # Get the text content of the span element
 span_text = span_element.text
 st.write(span_text)
