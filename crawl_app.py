@@ -37,7 +37,6 @@ if url:
     for i in else_list:
       response_2 = requests.get(i)
       soup_2 = BeautifulSoup(response_2.content, 'html.parser')
-
     # Extract the data you want to display
       title_list = []
       title = soup_2.title.string
@@ -46,9 +45,9 @@ if url:
     
     translator = Translator()
     en_lst = []
-      for j in title_list:
-        trans = translator.translate(j, src='vi', dest='en')
-        en_lst.append(trans.text)
-        st.write(trans.text)
+    for j in title_list:
+      trans = translator.translate(j, src='vi', dest='en')
+      en_lst.append(trans.text)
+      st.write(trans.text)
     # Display the data using Streamlit
 #     st.title(title_list)
