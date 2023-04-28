@@ -14,19 +14,6 @@ st.set_page_config(page_title=apptitle,
                    page_icon="🧊",
                    initial_sidebar_state="expanded")
 #                  page_icon="chart_with_upwards_trend")
-
-# # Crawl the webpage using requests
-# url = 'https://vnexpress.net/kinh-doanh/chung-khoan-p2'
-# response = requests.get(url)
-# # Parse the HTML using BeautifulSoup
-# soup = BeautifulSoup(response.content, 'html.parser')
-
-# # Extract the data you want to display
-# title = soup.title.string
-# # Display the data using Streamlit
-# st.title(title)
-
-
 # Get the URL from the user using a text input widget
 url = st.text_input('Enter a URL')
 
@@ -45,3 +32,14 @@ if url:
       if ("https://" in href) and ('-' in href):
         else_list.append(href)
     st.write(else_list)
+    
+    for i in else_list:
+      response_2 = requests.get(i)
+      soup_2 = BeautifulSoup(response_2.content, 'html.parser')
+
+    # Extract the data you want to display
+      title_list = []
+      title = soup_2.title.string
+      title_list.append(title)
+    # Display the data using Streamlit
+    st.title(title_list)
