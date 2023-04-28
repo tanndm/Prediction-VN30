@@ -42,6 +42,6 @@ if url:
     link_list = set(list(hrefs))
     else_list = []
     for href in link_list:
-      if "https://" in href:
+      if ("https://" in href) or (href != "https://video.vnexpress.net") or (href != "https://e.vnexpress.net/"):
         else_list.append(href)
     st.write(else_list)
