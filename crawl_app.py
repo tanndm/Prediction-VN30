@@ -49,5 +49,5 @@ if url:
       trans = translate.translate(j, src='vi', dest='en')
       en_lst.append(trans.text)
       st.write(trans.text)
-    Display the data using Streamlit
+#     Display the data using Streamlit
     st.title(title_list)
