@@ -41,13 +41,13 @@ if url:
       title_list = []
       title = soup_2.title.string
       title_list.append(title)
-#       st.write(title)
+      st.write(title_list)
     
-    translator = Translator()
-    en_lst = []
-    for j in title_list:
-      trans = translator.translate(j, src='vi', dest='en')
-      en_lst.append(trans.text)
-      st.write(trans.text)
+#     translate = Translator()
+#     en_lst = []
+#     for j in title_list:
+#       trans = translate.translate(j, src='vi', dest='en')
+#       en_lst.append(trans.text)
+#       st.write(trans.text)
     # Display the data using Streamlit
 #     st.title(title_list)
