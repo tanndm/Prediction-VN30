@@ -60,3 +60,8 @@ if st.button('Get'):
     
     st.write(df_2)
 
+
+span_element = soup.find('span', {'xpath': '/html/body/section[5]/div/div[2]/div[1]/span'})
+# Get the text content of the span element
+span_text = span_element.text
+st.write(span_text)
