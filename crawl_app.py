@@ -46,8 +46,9 @@ if url:
     translate = Translator()
     en_lst = []
     for j in title_list:
-      trans = translate.translate(j, src='vi', dest='en')
-      en_lst.append(trans.text)
-      st.write(trans.text)
-#     Display the data using Streamlit
-    st.title(title_list)
+      st.write(j)
+#       trans = translate.translate(j, src='vi', dest='en')
+#       en_lst.append(trans.text)
+#       st.write(trans.text)
+# #     Display the data using Streamlit
+#     st.title(title_list)
