@@ -53,7 +53,7 @@ if st.button('Get'):
       trans = translator.translate(df.Title.iloc[j], src='vi', dest='en')
       en_lst.append(trans.text)
       
-      dt_obj = datetime.fromtimestamp(df.index[j])
+      dt_obj = datetime.fromtimestamp(df.index[j]).strftime('%y - %m - %d')
       time_lst.append(dt_obj)
       
     df_2 = pd.DataFrame(en_lst,columns=['Title'],index = time_lst)
