@@ -55,5 +55,5 @@ if st.button('Get'):
 #     st.title(title_list)
 
 translator = Translator()
-trans = translator.translate(df.Title.iloc[0], dest='en')
+trans = translator.translate("Cổ phiếu hàng không tăng mạnh", dest='en')
 st.write(trans.text)
