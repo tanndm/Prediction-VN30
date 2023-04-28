@@ -18,9 +18,9 @@ st.set_page_config(page_title=apptitle,
 #                  page_icon="chart_with_upwards_trend")
 # Get the URL from the user using a text input widget
 url = st.text_input('Enter a URL')
-
+st.button('Get')
 # Extract the href attribute from the link using requests and BeautifulSoup
-if url:
+if st.button('Get'):
     response = requests.get(url)
     soup = BeautifulSoup(response.content, 'html.parser')
     links = soup.find_all('a')
@@ -43,11 +43,11 @@ if url:
       title_list.append(title)
     st.write(title_list)
     
-    translate = Translator()
+    translator = Translator()
     en_lst = []
     for j in title_list:
       st.write(j)
-      trans = translate.translate(f"{j}", src='vi', dest='en')
+      trans = translator.translate(j, dest='en')
 #       en_lst.append(trans.text)
 #       st.write(trans.text)
 # #     Display the data using Streamlit
