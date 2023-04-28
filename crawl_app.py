@@ -41,7 +41,7 @@ if url:
       title_list = []
       title = soup_2.title.string
       title_list.append(title)
-      st.write(title_list)
+    st.write(title_list)
     
 #     translate = Translator()
 #     en_lst = []
