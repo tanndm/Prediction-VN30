@@ -8,6 +8,7 @@ import requests
 from bs4 import BeautifulSoup
 import googletrans
 from googletrans import Translator
+import datatime
 
 # -- Set page config
 apptitle = 'Predict VN30-index crawl data'
@@ -46,9 +47,16 @@ if st.button('Get'):
     
     translator = Translator()
     en_lst = []
+    time_lst = []
+    
     for j in range(len(df.Title)):
       trans = translator.translate(df.Title.iloc[j], src='vi', dest='en')
       en_lst.append(trans.text)
-    df_2 = pd.DataFrame(en_lst,columns=['Title'],index = [i for i in range(0,len(en_lst))])
+      
+      dt_obj = datetime.fromtimestamp(df.index.iloc[j])
+      time_lst.append(dt_obj)
+      
+    df_2 = pd.DataFrame(en_lst,columns=['Title'],index = time_lst)
+    
     st.write(df_2)
 
