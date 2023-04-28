@@ -45,7 +45,7 @@ if url:
     
     translate = Translator()
     en_lst = []
-    for j in title_list:e
+    for j in title_list:
       st.write(j)
       trans = translate.translate(f"{j}", src='vi', dest='en')
 #       en_lst.append(trans.text)
