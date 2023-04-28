@@ -16,7 +16,7 @@ st.set_page_config(page_title=apptitle,
 #                  page_icon="chart_with_upwards_trend")
 
 # Crawl the webpage using requests
-url = 'https://vnexpress.net/thanh-tich-kinh-te-khong-tron-ven-cua-ong-biden-4598764.html'
+url = 'https://vnexpress.net/kinh-doanh/chung-khoan-p1'
 response = requests.get(url)
 # Parse the HTML using BeautifulSoup
 soup = BeautifulSoup(response.content, 'html.parser')
