@@ -39,6 +39,9 @@ if url:
 
     # Display the extracted href attributes using a write widget
     st.write('Extracted href attributes:')
-    st.write(set(list(hrefs)))
-#     for href in hrefs:
-#         st.write(set(href))
+    link_list = set(list(hrefs))
+    else_list = []
+    for href in link_list:
+      if "https://" in href:
+        else_list.append(href)
+    st.write(else_list)
