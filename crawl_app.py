@@ -41,5 +41,6 @@ if url:
       title_list = []
       title = soup_2.title.string
       title_list.append(title)
+      st.write(title)
     # Display the data using Streamlit
-    st.title(title_list)
+#     st.title(title_list)
