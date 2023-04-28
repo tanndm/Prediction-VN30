@@ -47,13 +47,9 @@ if st.button('Get'):
 #     translator = Translator()
 #     en_lst = []
 #     for j in range(len(df.Title)):
-#       st.write(df.Title.iloc[j])
-#       trans = translator.translate(df.Title.iloc[j], dest='en')
+#       trans = translator.translate(df.Title.iloc[j], src='vi', dest='en')
 #       en_lst.append(trans.text)
 #       st.write(trans.text)
-# #     Display the data using Streamlit
-#     st.title(title_list)
-
 translator = Translator()
-trans = translator.translate("Cổ phiếu ngành hàng không tăng phi mã", src='vi', dest='en')
+trans = translator.translate(df.Title.iloc[0], src='vi', dest='en')
 st.write(trans.text)
