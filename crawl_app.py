@@ -42,14 +42,13 @@ if st.button('Get'):
       title = soup_2.title.string
       title_list.append(title)  
     df = pd.DataFrame(title_list,columns=['Title'],index = [i for i in range(0,len(title_list))])
-    st.write(df)
+#     st.write(df)
     
-#     translator = Translator()
-#     en_lst = []
-#     for j in range(len(df.Title)):
-#       trans = translator.translate(df.Title.iloc[j], src='vi', dest='en')
-#       en_lst.append(trans.text)
-#       st.write(trans.text)
-translator = Translator()
-trans = translator.translate(df.Title.iloc[0], src='vi', dest='en')
-st.write(trans.text)
+    translator = Translator()
+    en_lst = []
+    for j in range(len(df.Title)):
+      trans = translator.translate(df.Title.iloc[j], src='vi', dest='en')
+      en_lst.append(trans.text)
+    df_2 = pd.DataFrame(en_lst,columns=['Title'],index = [i for i in range(0,len(en_lst))])
+    st.write(df_2)
+
