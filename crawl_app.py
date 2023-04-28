@@ -40,17 +40,16 @@ if st.button('Get'):
       soup_2 = BeautifulSoup(response_2.content, 'html.parser')
     # Extract the data you want to display
       title = soup_2.title.string
-      title_list.append(title)
-    st.write(title_list)
-    
+      title_list.append(title)  
     df = pd.DataFrame(title_list,columns=['Title'],index = [i for i in range(0,len(title_list))])
+    st.write(df)
+    
     translator = Translator()
     en_lst = []
-    for j in title_list:
-      st.write(j)
-    st.write(df)
-#       trans = translator.translate(j, dest='en')
-#       en_lst.append(trans.text)
+    for j in range(len(df.Title)):
+      st.write(df.Title.iloc[j])
+      trans = translator.translate(df.Title.iloc[j], dest='en')
+      en_lst.append(trans.text)
 #       st.write(trans.text)
 # #     Display the data using Streamlit
 #     st.title(title_list)
