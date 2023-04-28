@@ -18,7 +18,7 @@ st.set_page_config(page_title=apptitle,
 #                  page_icon="chart_with_upwards_trend")
 # Get the URL from the user using a text input widget
 url = st.text_input('Enter a URL')
-st.button('Get')
+# st.button('Get')
 # Extract the href attribute from the link using requests and BeautifulSoup
 if st.button('Get'):
     response = requests.get(url)
