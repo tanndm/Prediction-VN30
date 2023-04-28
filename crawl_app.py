@@ -40,4 +40,4 @@ if url:
     # Display the extracted href attributes using a write widget
     st.write('Extracted href attributes:')
     for href in hrefs:
-        st.write(href)
+        st.write(set(href))
