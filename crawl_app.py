@@ -6,6 +6,8 @@ import joblib
 import webbrowser as wb
 import requests
 from bs4 import BeautifulSoup
+import googletrans
+from googletrans import Translator
 
 # -- Set page config
 apptitle = 'Predict VN30-index crawl data'
@@ -31,8 +33,7 @@ if url:
     for href in link_list:
       if ("https://" in href) and ('-' in href):
         else_list.append(href)
-    st.write(else_list)
-    
+    st.write(else_list)   
     for i in else_list:
       response_2 = requests.get(i)
       soup_2 = BeautifulSoup(response_2.content, 'html.parser')
@@ -41,6 +42,13 @@ if url:
       title_list = []
       title = soup_2.title.string
       title_list.append(title)
-      st.write(title)
+#       st.write(title)
+    
+    translator = Translator()
+    en_lst = []
+      for j in title_list:
+        trans = translator.translate(j, src='vi', dest='en')
+        en_lst.append(trans.text)
+        st.write(trans.text)
     # Display the data using Streamlit
 #     st.title(title_list)
