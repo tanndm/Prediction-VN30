@@ -43,11 +43,13 @@ if st.button('Get'):
       title_list.append(title)
     st.write(title_list)
     
+    df = pd.DataFrame(title_list,columns=['Title'],index = [i for i in range(0,len(title_list))])
     translator = Translator()
     en_lst = []
     for j in title_list:
       st.write(j)
-      trans = translator.translate(j, dest='en')
+    st.write(df)
+#       trans = translator.translate(j, dest='en')
 #       en_lst.append(trans.text)
 #       st.write(trans.text)
 # #     Display the data using Streamlit
