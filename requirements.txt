@@ -3,3 +3,4 @@ joblib
 numpy
 pandas
 requests
+bs4
