@@ -8,7 +8,7 @@ import requests
 from bs4 import BeautifulSoup
 import googletrans
 from googletrans import Translator
-import datetime
+from datetime import datetime
 
 # -- Set page config
 apptitle = 'Predict VN30-index crawl data'
