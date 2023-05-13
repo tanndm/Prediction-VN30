@@ -285,7 +285,7 @@ elif select_event == 'Upload file':
     st.warning('You do not input neccessary features', icon="⚠️")
 elif select_event == 'Link Github':
   link_git = st.sidebar.text_input("Enter your link:")
-  df_link = pd.DataFrame(link_git)
+  df_link = pd.read_csv(link_git)
   st.dataframe(df_link)
 elif select_event == 'Select':
   pass
