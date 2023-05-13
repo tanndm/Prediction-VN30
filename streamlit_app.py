@@ -302,7 +302,7 @@ elif select_event == 'Link Github':
     
         df_final = pd.DataFrame({"Predict":pred_new,
                              'Downtrend':pred_new_prob[:,0], 
-                             'Uptrend':pred_new_prob[:,1]},index=new_data.index)
+                             'Uptrend':pred_new_prob[:,1]},index=df_link.index)
   else:
     pass
 
