@@ -198,7 +198,7 @@ import datetime
 st.header("Forcasting result")
 ########################################################################
 select_event = st.sidebar.selectbox('#### Methods',
-                                    ['Select','Manual input', 'Upload file'])
+                                    ['Select','Manual input', 'Upload file','Link Github'])
 
 if select_event == 'Manual input':
     bid_quality = st.sidebar.number_input("bid_quality", value=66774)
@@ -283,5 +283,9 @@ elif select_event == 'Upload file':
         pass
   else:
     st.warning('You do not input neccessary features', icon="⚠️")
+elif select_event == 'Link Github':   
+  link_git = st.sidebar.text_input("Enter your link:")
+  df_link = pd.DataFrame(str(link_git))
+  st.dataframe(df_link)
 elif select_event == 'Select':
   pass
