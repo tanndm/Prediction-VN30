@@ -285,7 +285,25 @@ elif select_event == 'Upload file':
     st.warning('You do not input neccessary features', icon="⚠️")
 elif select_event == 'Link Github':
   link_git = st.sidebar.text_input("Enter your link:")
-  df_link = pd.read_csv(r'https://raw.githubusercontent.com/BrianNguyen2001/Prediction-VN30/main/cleaned_new_data_datn.csv')
-  st.dataframe(df_link)
+  df_link = pd.read_csv('https://raw.githubusercontent.com/BrianNguyen2001/Prediction-VN30/main/cleaned_new_data_datn.csv')
+  if st.sidebar.button('#### Make prediction'):
+        progress_text = "Operation in progress. Please wait."
+        my_bar = st.progress(100, text=progress_text)
+        for percent_complete in range(100):
+            time.sleep(0.1)
+            my_bar.progress(percent_complete + 1, text=progress_text)
+        st.dataframe(df_link,use_container_width=True)
+        X= df_link.iloc[:,:-1]
+        X.columns = ["Number of buy orders","Buy-orders volume","Number of sell orders","Sell-orders volume","Order matching volume","Put-through volume",
+                 "Positive","Negative","SMA_10","SMA_20","EMA_10","EMA_20","RSI_7d","RSI_9d","RSI_14d"]
+        pred_new = scaler.predict(X)
+        pred_new_prob = scaler.predict_proba(X)
+    
+        df_final = pd.DataFrame({"Predict":pred_new,
+                             'Downtrend':pred_new_prob[:,0], 
+                             'Uptrend':pred_new_prob[:,1]},index=new_data.index)
+  else:
+    pass
+
 elif select_event == 'Select':
   pass
