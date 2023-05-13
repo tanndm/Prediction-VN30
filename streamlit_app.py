@@ -286,8 +286,7 @@ elif select_event == 'Upload file':
 elif select_event == 'Link Github':
   link_git = st.sidebar.text_input("Enter your link:")
   st.write(link_git)
-  df_link = pd.read_csv(link_git)
-#   pd.read_csv(r'https://raw.githubusercontent.com/BrianNguyen2001/Prediction-VN30/main/cleaned_new_data_datn.csv')
-#   st.dataframe(df_link)
+  df_link = pd.read_csv(r'https://raw.githubusercontent.com/BrianNguyen2001/Prediction-VN30/main/cleaned_new_data_datn.csv')
+  st.dataframe(df_link)
 elif select_event == 'Select':
   pass
