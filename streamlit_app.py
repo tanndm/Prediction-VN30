@@ -285,7 +285,8 @@ elif select_event == 'Upload file':
     st.warning('You do not input neccessary features', icon="⚠️")
 elif select_event == 'Link Github':
   link_git = st.sidebar.text_input("Enter your link:")
-  df_link = pd.read_csv('https://raw.githubusercontent.com/BrianNguyen2001/Prediction-VN30/main/cleaned_new_data_datn.csv')
+#   df_link = pd.read_csv('https://raw.githubusercontent.com/BrianNguyen2001/Prediction-VN30/main/cleaned_new_data_datn.csv')
+  df_link = pd.read_csv(link_git,index_col=0)
   if st.sidebar.button('#### Make prediction'):
         progress_text = "Operation in progress. Please wait."
         my_bar = st.progress(100, text=progress_text)
