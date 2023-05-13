@@ -300,9 +300,10 @@ elif select_event == 'Link Github':
         pred_new = scaler.predict(X)
         pred_new_prob = scaler.predict_proba(X)
     
-        df_final = pd.DataFrame({"Predict":pred_new,
+        df_final_2 = pd.DataFrame({"Predict":pred_new,
                              'Downtrend':pred_new_prob[:,0], 
                              'Uptrend':pred_new_prob[:,1]},index=df_link.index)
+        st.dataframe(df_final_2,use_container_width=True)
   else:
     pass
 
