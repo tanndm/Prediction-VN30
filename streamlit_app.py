@@ -285,9 +285,9 @@ elif select_event == 'Upload file':
     st.warning('You do not input neccessary features', icon="⚠️")
 elif select_event == 'Link Github':
   link_git = st.sidebar.text_input("Enter your link:")
-  if link_git == None:
+  if link_git == "":
     st.warning('You do not input neccessary features', icon="⚠️")
-  else:
+  elif link_git != "":
 #   df_link = pd.read_csv('https://raw.githubusercontent.com/BrianNguyen2001/Prediction-VN30/main/cleaned_new_data_datn.csv')
     df_link = pd.read_csv(link_git,index_col=0)
     if st.sidebar.button('#### Make prediction'):
