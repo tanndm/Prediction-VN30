@@ -195,7 +195,7 @@ import datetime
 #   d2 = st.date_input(
 #     "End: ",
 #     datetime.date(2023, 4, 4))
-st.header("Forcasting result")
+st.header("Forcasting display")
 ########################################################################
 select_event = st.sidebar.selectbox('#### Methods',
                                     ['Select','Manual input', 'Upload file','Link Github'])
@@ -236,6 +236,7 @@ if select_event == 'Manual input':
             my_bar.progress(percent_complete + 1, text=progress_text)
 #         with st.spinner('Wait for it...'):
 #             time.sleep(2)
+        st.header("Input data")
         st.dataframe(res_df,use_container_width=True)
         pred_out(pred)
         df_prob = pd.DataFrame({'Downtrend':pred_prob[:,0], 'Uptrend':pred_prob[:,1]},index=["05-05-2023"])
@@ -298,6 +299,7 @@ elif select_event == 'Link Github':
           for percent_complete in range(100):
               time.sleep(0.1)
               my_bar.progress(percent_complete + 1, text=progress_text)
+          st.header("Input data")
           st.dataframe(df_link,use_container_width=True)
           X= df_link.iloc[:,:-1]
           X.columns = ["Number of buy orders","Buy-orders volume","Number of sell orders","Sell-orders volume","Order matching volume","Put-through volume",
@@ -308,7 +310,7 @@ elif select_event == 'Link Github':
           df_final_2 = pd.DataFrame({"Predict":pred_new,
                                'Downtrend':pred_new_prob[:,0], 
                                'Uptrend':pred_new_prob[:,1]},index=df_link.index)
-          st.header("Forecasting result:")
+          st.header("Forecasting result")
           st.dataframe(df_final_2,use_container_width=True)
     else:
       pass
